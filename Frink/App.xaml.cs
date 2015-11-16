@@ -10,6 +10,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -46,7 +47,7 @@ namespace Frink
         /// search results, and so forth.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        async protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
@@ -91,30 +92,63 @@ namespace Frink
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 
-                /*
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                String value = (String) localSettings.Values[ConstantsHelper.LOCALE_KEY_APPLICATION_THEME];
+#if DEBUG
+                Debug.WriteLine("[App.xaml.cs] loading file ");
+#endif
 
-                Debug.WriteLine("APP getting string");
+                var file = await  FileHelper.ValidateFile(ApplicationData.Current.TemporaryFolder, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
 
-                if (value == null || value.Equals(""))
+                if (file == null)
                 {
-                    
-                }
+#if DEBUG
+                    Debug.WriteLine("[App.xaml.cs] file is null");
+#endif
+
+                    // When the navigation stack isn't restored navigate to the first page,
+                    // configuring the new page by passing required information as a navigation
+                    // parameter
+                    if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                    {
+                        throw new Exception("Failed to create initial page");
+                    }
+                } 
                 else
                 {
-                    String valueDecrypted = EncryptHelper.AES_Decrypt(value, ConstantsHelper.LOCALE_PASSWORD);
-                    DataHelper.Instance._themeModel = JSONHelper.ParseDataObject<ThemeModel>(valueDecrypted);
-                }
-                 */
+                    String contents = await Windows.Storage.FileIO.ReadTextAsync(file);
 
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
-                {
-                    throw new Exception("Failed to create initial page");
-                }
+                    if (contents != null)
+                    {
+#if DEBUG
+                        Debug.WriteLine("[App.xaml.cs] file is NOT null ");
+#endif
+                        DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>
+                        (
+                            EncryptHelper.AES_Decrypt(contents, ConstantsHelper.LOCALE_PASSWORD)
+                        );
+
+                        // When the navigation stack isn't restored navigate to the first page,
+                        // configuring the new page by passing required information as a navigation
+                        // parameter
+                        if (!rootFrame.Navigate(typeof(NavigationListPage), e.Arguments))
+                        {
+                            throw new Exception("Failed to create initial navigation page");
+                        }
+                    }
+                    else
+                    {
+#if DEBUG
+                        Debug.WriteLine("[App.xaml.cs] local is null ");
+#endif
+
+                        // When the navigation stack isn't restored navigate to the first page,
+                        // configuring the new page by passing required information as a navigation
+                        // parameter
+                        if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
+                        {
+                            throw new Exception("Failed to create initial page");
+                        }
+                    }
+                }                
             }
 
             // Ensure the current window is active

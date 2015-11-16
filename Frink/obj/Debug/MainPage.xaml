@@ -11,9 +11,11 @@
     <Grid>
         <StackPanel
             Orientation="Vertical"
-            VerticalAlignment="Center">
+            VerticalAlignment="Center"
+            Height="Auto">
             
             <ProgressRing 
+                x:Name="progressRing"
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center"
                 IsActive="True" 
@@ -27,6 +29,14 @@
                 HorizontalAlignment="Center" 
                 TextWrapping="Wrap" 
                 VerticalAlignment="Center" />
+            
+            <Button x:ConnectionId='1'
+                Visibility="Collapsed"
+                x:Name="buttonRefresh"
+                Margin="0,50,0,0"
+                                           
+                HorizontalAlignment="Center"
+                x:Uid="textRefresh"/>
         </StackPanel>
     </Grid>
 </Page>

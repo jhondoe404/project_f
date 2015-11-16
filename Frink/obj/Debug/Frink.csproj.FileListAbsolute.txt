@@ -39,3 +39,44 @@ D:\Projekti\Windows Phone\Frink\Frink\obj\Debug\NavigationListPage.g.i.cs
 D:\Projekti\Windows Phone\Frink\Frink\obj\Debug\NavigationListPage.g.cs
 D:\Projekti\Windows Phone\Frink\Frink\obj\Debug\NavigationListPage.xaml
 D:\Projekti\Windows Phone\Frink\Frink\obj\Debug\NavigationListPage.xbf
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\App.xbf
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\MainPage.xbf
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\NavigationListPage.xbf
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\Frink.xr.xml
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\Frink.exe
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\Frink.pdb
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\resources.pri
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\AppxManifest.xml
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\Frink.build.appxrecipe
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\Newtonsoft.Json.dll
+D:\Projekti\WindowsPhone\Frink\Frink\bin\Debug\Newtonsoft.Json.xml
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\Frink.csprojResolveAssemblyReference.cache
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\App.g.i.cs
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\App.g.cs
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\MainPage.g.i.cs
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\MainPage.g.cs
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\NavigationListPage.g.i.cs
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\NavigationListPage.g.cs
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\XamlTypeInfo.g.cs
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\App.xaml
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\MainPage.xaml
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\NavigationListPage.xaml
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\App.xbf
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\MainPage.xbf
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\NavigationListPage.xbf
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\XamlSaveStateFile.xml
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\Frink.exe
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\Frink.pdb
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\Frink.csproj.GenerateResource.Cache
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\priconfig.xml
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\priconfig.xml.intermediate
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\layout.resfiles
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\layout.resfiles.intermediate
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\resources.resfiles
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\resources.resfiles.intermediate
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\pri.resfiles
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\pri.resfiles.intermediate
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\qualifiers.txt
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\qualifiers.txt.intermediate
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+D:\Projekti\WindowsPhone\Frink\Frink\obj\Debug\ProjectArchitectures.txt

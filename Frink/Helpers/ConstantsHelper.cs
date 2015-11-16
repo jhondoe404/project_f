@@ -29,6 +29,8 @@ namespace Frink.Helpers
         public const String LOCALE_PASSWORD = "thisisanawasomecoolpassword";
         public const String LOCALE_KEY_APPLICATION_THEME = "applicationtheme";
 
+        public const String LOCAL_FILE_APPLICATION_THEME = "apptheme.txt";
+
 
 
         #endregion

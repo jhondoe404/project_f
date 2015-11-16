@@ -51,7 +51,7 @@ namespace Frink.Helpers
             else
             {
                 var myMessageDialog = new MessageDialog("Invalid Json format");
-                myMessageDialog.ShowAsync();
+                await myMessageDialog.ShowAsync();
                 return default(T);
             }
         }

@@ -57,18 +57,27 @@ namespace Frink.Helpers
         ///     Validates received data (if any) and encoded data already stored
         ///     locally (if any)
         /// </summary>
-        /// <param name="result">string</param>
-        /// <param name="sampleFile">StorageFile</param>
-        /// <param name="readData">string</param>
-        /// <param name="passphrase">string</param>
+        /// <param name="result">string to be encoded and stored</param>
+        /// <param name="sampleFile">StorageFile file to which it's being stoed to</param>
+        /// <param name="readData">string data to which it's being compared to</param>
+        /// <param name="passphrase">string encryption passphrase</param>
         /// <returns></returns>
         private static async Task<string> ValidateStoredData(string result, StorageFile sampleFile, string readData,
             string passphrase)
         {
+#if DEBUG
+            Debug.WriteLine("[FileHelper][ValidateStoredData] Raw: " + result);
+#endif
             var encodedData = EncryptHelper.AES_Encrypt(result, passphrase);
+#if DEBUG
+            Debug.WriteLine("[FileHelper][ValidateStoredData] Encrypted: " + encodedData);
+#endif
 
             if (result != null && !result.Equals("") && !encodedData.Equals(readData))
             {
+#if DEBUG
+                Debug.WriteLine("[FileHelper][ValidateStoredData] Encoded data stored succesfully");
+#endif
                 await FileIO.WriteTextAsync(sampleFile, encodedData);
                 return result;
             }

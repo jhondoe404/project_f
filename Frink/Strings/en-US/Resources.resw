@@ -124,4 +124,7 @@
   <data name="loadingApplicationTheme" xml:space="preserve">
     <value>Loading application data...</value>
   </data>
+  <data name="textRefresh.Content" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
 </root>
