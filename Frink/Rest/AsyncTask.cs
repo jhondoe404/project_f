@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using System.Diagnostics;
 using Windows.Web.Http;
 using Windows.Storage.Streams;
+using Windows.Web.Http.Headers;
+using Frink.Helpers;
 
 namespace Frink.Rest
 {
@@ -20,17 +21,16 @@ namespace Frink.Rest
 
 
 
-        public string               _url;
-        string                      _method;
-        string                      _contentType;
-        const string                Passphrase = "1furd3crypt1ngth15urn00b";
-        public int                  _statusCode;
-        Dictionary<string, string>  _body;
-        public WebHeaderCollection  _header;
-        public const string         Post = "POST";
-        public const string         Get = "GET";
-        public const string         Put = "PUT";
-        public const string         Delete = "DELETE";
+        public string                       _url;
+        string                              _method;
+        string                              _contentType;
+        string                              _etag;   
+        Dictionary<string, string>          _body;
+        public HttpResponseHeaderCollection _header;
+        public const string                 Post = "POST";
+        public const string                 Get = "GET";
+        public const string                 Put = "PUT";
+        public const string                 Delete = "DELETE";
 
 
 
@@ -122,6 +122,19 @@ namespace Frink.Rest
         {
             if (body != null)
                 _body = body;
+            return this;
+        }
+
+
+        /// <summary>
+        ///     Sets the etag, if any to be used for the server validation 
+        /// </summary>
+        /// <param name="etag">String value to be used for the server validation</param>
+        /// <returns></returns>
+        public AsyncTask setETag(String etag)
+        {
+            if (etag != null)
+                _etag = etag;
             return this;
         }
 
@@ -238,6 +251,9 @@ namespace Frink.Rest
             HttpFormUrlEncodedContent formContent = null;
             if (body != null && body.Length > 0)
                 formContent = new HttpFormUrlEncodedContent(_body);
+                        
+            if (_etag != null)
+                request.DefaultRequestHeaders.Add(new KeyValuePair<string,string>(ConstantsHelper.API_ETAG, _etag));
 
             HttpResponseMessage response = null;
             if (_method.Equals(AsyncTask.Get))
@@ -257,8 +273,11 @@ namespace Frink.Rest
             using (var reader = DataReader.FromBuffer(stream))
                 reader.ReadBytes(readstream);
 
+            Debug.WriteLine("[AsyncTask][getFromWeb] it contains an etag: " + response.Headers["ETag"]);
+
+            _header = response.Headers;
             request.Dispose();
-            response.Dispose();
+            response.Dispose();            
             return readstream;
         }
 

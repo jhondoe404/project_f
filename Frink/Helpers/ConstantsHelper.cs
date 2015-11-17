@@ -15,6 +15,9 @@ namespace Frink.Helpers
         public const String API_APP_ID = "1";
         public const String API_HOST_URL= "http://frink-dev.smartfactory.ch:1337/api";
 
+        public const String API_ETAG = "ETag";
+        public const String API_ETAG_CACHE_DELIMITER = " =#=! ";
+
         public const String API_METHOD_MENU =  "/app";
         public const String API_METHOD_LIST = "/entries";
 

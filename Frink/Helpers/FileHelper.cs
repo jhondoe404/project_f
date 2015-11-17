@@ -2,99 +2,39 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.Storage.Streams;
 
 namespace Frink.Helpers
 {
-    class FileHelper
+    public static class FileHelper
     {
+        #region FILE HELPERS
+
+
+
+
+
         /// <summary>
         ///     Check to see if the file exists or not
         /// </summary>
         /// <param name="storagefolder">StorageFolder</param>
         /// <param name="filename">string</param>
         /// <returns>StorageFile or null</returns>
-        public static async Task<StorageFile> ValidateFile(StorageFolder storagefolder, string filename)
+        public static async Task<bool> ValidateFile(StorageFolder storagefolder, string filename)
         {
             try
             {
-                return await storagefolder.GetFileAsync(filename);
+                await storagefolder.GetFileAsync(filename);
+                return true;
             }
             catch (FileNotFoundException)
             {
-                return null;
+                return false;
             }
         }
 
-        /// <summary>
-        ///     Get data from localSettings, if any
-        /// </summary>
-        /// <param name="result">string</param>
-        /// <param name="storagefolder">StorageFolder</param>
-        /// <param name="filename">string</param>
-        /// <param name="passphrase">string</param>
-        /// <returns>string</returns>
-        public static async Task<string> GetFromLocal(string result, StorageFolder storagefolder, string filename,
-            string passphrase)
-        {
-            try
-            {
-                var sampleFile = await GetFile(storagefolder, filename);
-                var readData = await FileIO.ReadTextAsync(sampleFile, Windows.Storage.Streams.UnicodeEncoding.Utf8);
-                return await ValidateStoredData(result, sampleFile, readData, passphrase);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                throw;
-            }
-        }
-
-        /// <summary>
-        ///     Validates received data (if any) and encoded data already stored
-        ///     locally (if any)
-        /// </summary>
-        /// <param name="result">string to be encoded and stored</param>
-        /// <param name="sampleFile">StorageFile file to which it's being stoed to</param>
-        /// <param name="readData">string data to which it's being compared to</param>
-        /// <param name="passphrase">string encryption passphrase</param>
-        /// <returns></returns>
-        private static async Task<string> ValidateStoredData(string result, StorageFile sampleFile, string readData,
-            string passphrase)
-        {
-#if DEBUG
-            Debug.WriteLine("[FileHelper][ValidateStoredData] Raw: " + result);
-#endif
-            var encodedData = EncryptHelper.AES_Encrypt(result, passphrase);
-#if DEBUG
-            Debug.WriteLine("[FileHelper][ValidateStoredData] Encrypted: " + encodedData);
-#endif
-
-            if (result != null && !result.Equals("") && !encodedData.Equals(readData))
-            {
-#if DEBUG
-                Debug.WriteLine("[FileHelper][ValidateStoredData] Encoded data stored succesfully");
-#endif
-                await FileIO.WriteTextAsync(sampleFile, encodedData);
-                return result;
-            }
-
-            return EncryptHelper.AES_Decrypt(readData, passphrase);
-        }
-
-        /// <summary>
-        ///     Loads file from appropriate storage folder
-        /// </summary>
-        /// <param name="folder">StorageFolder</param>
-        /// <param name="filename">string</param>
-        /// <returns>StorageFile</returns>
-        public static async Task<StorageFile> GetFile(StorageFolder folder, string filename)
-        {
-            return await folder.CreateFileAsync(filename, CreationCollisionOption.OpenIfExists);
-        }
 
         /// <summary>
         ///     Deletes all of the files in the passed list
@@ -105,5 +45,120 @@ namespace Frink.Helpers
             foreach (var item in items)
                 if (item is StorageFile) await item.DeleteAsync();
         }
+
+
+        /// <summary>
+        /// Reads a string from a text file.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="folder">The folder.</param>
+        /// <returns></returns>
+        public static async Task<string> ReadFromFile(string fileName, StorageFolder folder = null)
+        {
+            folder = folder ?? ApplicationData.Current.LocalFolder;
+            var file = await folder.GetFileAsync(fileName);
+
+            using (var fs = await file.OpenAsync(FileAccessMode.Read))
+            {
+                using (var inStream = fs.GetInputStreamAt(0))
+                {
+                    using (var reader = new DataReader(inStream))
+                    {
+                        await reader.LoadAsync((uint)fs.Size);
+                        string data = reader.ReadString((uint)fs.Size);
+                        reader.DetachStream();
+
+                        return data;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Writes a string to a text file.
+        /// </summary>
+        /// <param name="text">The text to write.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="folder">The folder.</param>
+        /// <param name="options">
+        /// The enum value that determines how responds if the fileName is the same
+        /// as the name of an existing file in the current folder. Defaults to ReplaceExisting.
+        /// </param>
+        /// <returns></returns>
+        public static async Task WriteToFile(this string text, string fileName, StorageFolder folder = null, CreationCollisionOption options = CreationCollisionOption.ReplaceExisting)
+        {
+            folder = folder ?? ApplicationData.Current.LocalFolder;
+            var file = await folder.CreateFileAsync(
+                fileName,
+                options);
+            using (var fs = await file.OpenAsync(FileAccessMode.ReadWrite))
+            {
+                using (var outStream = fs.GetOutputStreamAt(0))
+                {
+                    using (var dataWriter = new DataWriter(outStream))
+                    {
+                        if (text != null)
+                            dataWriter.WriteString(text);
+
+                        await dataWriter.StoreAsync();
+                        dataWriter.DetachStream();
+                    }
+
+                    await outStream.FlushAsync();
+                }
+            }
+        }
+
+
+
+
+
+        #endregion
+        #region HTTP FILE HELPERS
+
+
+        /// <summary>
+        ///     Writes a http request to a file, encrypted, with it's etag
+        /// </summary>
+        /// <param name="body">body of the http request to store</param>
+        /// <param name="file">file to which the http request will be written to</param>
+        /// <param name="etag">etag of the http request for the validation</param>
+        /// <returns></returns>
+        async public static Task writeHttpToFile(string body, string file, string etag = null)
+        {
+            string bodyToSave = body + ConstantsHelper.API_ETAG_CACHE_DELIMITER + etag;
+            var encrypted = EncryptHelper.AES_Encrypt(bodyToSave, ConstantsHelper.LOCALE_PASSWORD);
+            await WriteToFile(encrypted, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
+        }
+
+
+        /// <summary>
+        ///     Reads http response and etag, if any, from a file
+        /// </summary>
+        /// <param name="file">file to read from</param>
+        /// <returns>array of decrypted data from the file. if there's any, 0 index is the body, 1 index is the etag</returns>
+        async public static Task<String[]> readHttpFromFile(string file)
+        {
+            String readfile = await FileHelper.ReadFromFile(file);
+            readfile = EncryptHelper.AES_Decrypt(readfile, ConstantsHelper.LOCALE_PASSWORD);
+
+            String[] separators = new String[1];
+            separators[0] = ConstantsHelper.API_ETAG_CACHE_DELIMITER;
+            String[] readfilesplit = readfile.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+#if DEBUG
+            Debug.WriteLine("[FileHelper][ReadHtpFromFile] split: " + readfilesplit[0]);
+            Debug.WriteLine("[FileHelper][ReadHtpFromFile] split: " + readfilesplit[1]);
+#endif
+
+            return readfilesplit;
+        }
+
+
+
+
+
+        #endregion
+
     }
 }

@@ -85,6 +85,10 @@ namespace Frink
         /// </summary>
         private async void loadApplicationData()
         {
+#if DEBUG
+            Debug.WriteLine("[MainPage][loadApplicationData] loading application theme");
+#endif
+
             statusMessage.Text = new ResourceLoader().GetString("loadingApplicationTheme");
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {

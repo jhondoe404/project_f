@@ -95,10 +95,7 @@ namespace Frink
 #if DEBUG
                 Debug.WriteLine("[App.xaml.cs] loading file ");
 #endif
-
-                var file = await  FileHelper.ValidateFile(ApplicationData.Current.TemporaryFolder, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
-
-                if (file == null)
+                if (await FileHelper.ValidateFile(ApplicationData.Current.LocalFolder, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME) == false)
                 {
 #if DEBUG
                     Debug.WriteLine("[App.xaml.cs] file is null");
@@ -113,18 +110,12 @@ namespace Frink
                     }
                 } 
                 else
-                {
-                    String contents = await Windows.Storage.FileIO.ReadTextAsync(file);
-
-                    if (contents != null)
-                    {
+                {                    
 #if DEBUG
                         Debug.WriteLine("[App.xaml.cs] file is NOT null ");
 #endif
-                        DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>
-                        (
-                            EncryptHelper.AES_Decrypt(contents, ConstantsHelper.LOCALE_PASSWORD)
-                        );
+                        String[] apptheme = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
+                        DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(apptheme[0]);
 
                         // When the navigation stack isn't restored navigate to the first page,
                         // configuring the new page by passing required information as a navigation
@@ -134,22 +125,8 @@ namespace Frink
                             throw new Exception("Failed to create initial navigation page");
                         }
                     }
-                    else
-                    {
-#if DEBUG
-                        Debug.WriteLine("[App.xaml.cs] local is null ");
-#endif
-
-                        // When the navigation stack isn't restored navigate to the first page,
-                        // configuring the new page by passing required information as a navigation
-                        // parameter
-                        if (!rootFrame.Navigate(typeof(MainPage), e.Arguments))
-                        {
-                            throw new Exception("Failed to create initial page");
-                        }
-                    }
                 }                
-            }
+            
 
             // Ensure the current window is active
             Window.Current.Activate();
