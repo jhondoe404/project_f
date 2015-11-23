@@ -1,3 +1,4 @@
+Assets\Fonts\fontawesome-webfont.ttf
 Assets\Logo.scale-240.png
 Assets\SmallLogo.scale-240.png
 Assets\SplashScreen.scale-240.png
@@ -8,3 +9,4 @@ App.xbf
 Frink.xr.xml
 MainPage.xbf
 NavigationListPage.xbf
+UserControls\MainNavigationUserControl.xbf

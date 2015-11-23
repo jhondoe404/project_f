@@ -124,6 +124,12 @@
   <data name="loadingApplicationTheme" xml:space="preserve">
     <value>Loading application data...</value>
   </data>
+  <data name="textLoadingImage.Text" xml:space="preserve">
+    <value>Loading image....</value>
+  </data>
+  <data name="textLoadingImageFailed.Text" xml:space="preserve">
+    <value>Failed to load the image</value>
+  </data>
   <data name="textRefresh.Content" xml:space="preserve">
     <value>Refresh</value>
   </data>

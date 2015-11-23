@@ -1,1 +1,2 @@
+D:\Projekti\WindowsPhone\project_f\BackgroundRest\BackgroundRest.csproj;neutral
 D:\Projekti\WindowsPhone\project_f\Frink\Frink.csproj;neutral

@@ -128,7 +128,7 @@ namespace Frink.Helpers
         {
             string bodyToSave = body + ConstantsHelper.API_ETAG_CACHE_DELIMITER + etag;
             var encrypted = EncryptHelper.AES_Encrypt(bodyToSave, ConstantsHelper.LOCALE_PASSWORD);
-            await WriteToFile(encrypted, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
+            await WriteToFile(encrypted, file);
         }
 
 
