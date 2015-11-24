@@ -16,24 +16,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel
-            Grid.Row="0">
-            <Image 
-                x:Name="imageHeader" 
-                ImageOpened="imageHeader_ImageOpened" 
-                ImageFailed="imageHeader_ImageFailed" />
-
-            <StackPanel x:Name="LoadingPanel" VerticalAlignment="Top">
-                <ProgressBar IsIndeterminate="True" IsEnabled="True" />
-                <TextBlock x:Uid="textLoadingImage" HorizontalAlignment="Center" />
-            </StackPanel>
-
-        </StackPanel>
+        <userControls:ImageLoaderUserControl 
+            Grid.Row="0"
+            x:Name="imageHeader"/>
         
         <ListView
             Grid.Row="1"
-            x:Name="ListViewNavigationMain"
-            Loaded="ListViewNavigationMain_Loaded">
+            x:Name="ListViewNavigationMain">
             <ListView.ItemTemplate>
                 <DataTemplate x:Name="NavigationItem">
                     <userControls:MainNavigationUserControl

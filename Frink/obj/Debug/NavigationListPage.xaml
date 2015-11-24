@@ -16,19 +16,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel
-            Grid.Row="0">
-            <Image x:ConnectionId='1' 
-                        x:Name="imageHeader" 
-                                                              
-                                                              />
-
-            <StackPanel x:Name="LoadingPanel" VerticalAlignment="Top">
-                <ProgressBar IsIndeterminate="True" IsEnabled="True" />
-                <TextBlock x:Uid="textLoadingImage" HorizontalAlignment="Center" />
-            </StackPanel>
-
-        </StackPanel>
+        <userControls:ImageLoaderUserControl 
+            Grid.Row="0"
+            x:Name="imageHeader"/>
         
         <ListView
             Grid.Row="1"

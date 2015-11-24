@@ -88,9 +88,7 @@ namespace Frink.Helpers
         public static async Task WriteToFile(this string text, string fileName, StorageFolder folder = null, CreationCollisionOption options = CreationCollisionOption.ReplaceExisting)
         {
             folder = folder ?? ApplicationData.Current.LocalFolder;
-            var file = await folder.CreateFileAsync(
-                fileName,
-                options);
+            var file = await folder.CreateFileAsync(fileName, options);
             using (var fs = await file.OpenAsync(FileAccessMode.ReadWrite))
             {
                 using (var outStream = fs.GetOutputStreamAt(0))
@@ -107,6 +105,25 @@ namespace Frink.Helpers
                     await outStream.FlushAsync();
                 }
             }
+        }
+
+
+        /// <summary>
+        ///     Writes a byte array to a specified file
+        /// </summary>
+        /// <param name="data">byte array to be written</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="folder">The folder.</param>
+        /// <param name="options">
+        /// The enum value that determines how responds if the fileName is the same
+        /// as the name of an existing file in the current folder. Defaults to ReplaceExisting.
+        /// </param>
+        /// <returns></returns>
+        public static async Task WriteToFile(byte[] data, string fileName, StorageFolder folder = null, CreationCollisionOption options = CreationCollisionOption.ReplaceExisting)
+        {
+            folder = folder ?? ApplicationData.Current.LocalFolder;
+            var file = await folder.CreateFileAsync(fileName, options);
+            await FileIO.WriteBytesAsync(file, data);
         }
 
 

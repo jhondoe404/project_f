@@ -84,10 +84,6 @@ namespace Frink.UserControls
 
             String text = ((string)e.NewValue).Replace("\\", "&#x") + ";";
 
-#if DEBUG
-            Debug.WriteLine("[MainNavigationUserControl][UpdateIcon] " + e.NewValue + " " + text);
-#endif 
-
             navigation.textBlockIcon.Foreground = DataHelper.Instance.themeColor_1;
             if (navigation.textBlockIcon.FontFamily != DataHelper.Instance.fontAwesome)
                 navigation.textBlockIcon.FontFamily = DataHelper.Instance.fontAwesome;

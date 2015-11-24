@@ -44,10 +44,10 @@ namespace Frink
             if (DataHelper.Instance._themeModel != null)
             {
                 ListViewNavigationMain.ItemsSource = DataHelper.Instance._themeModel.menu.items;
+                imageHeader.ImageSource = DataHelper.Instance._themeModel.menu.image;
             }
 
             //startTask();
-            loadImage();
         }
 
       
@@ -79,35 +79,6 @@ namespace Frink
             await(new MessageDialog("Task registered")).ShowAsync();
         }
 
-
-
-        #endregion
-
-        #region IMAGE LOADING METHODS
-
-
-        private void loadImage()
-        {
-            LoadingPanel.Visibility = Visibility.Visible;
-            Uri myUri = new Uri(DataHelper.Instance._themeModel.menu.image, UriKind.Absolute);
-            BitmapImage bmi = new BitmapImage();
-            bmi.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-            bmi.UriSource = myUri;
-            imageHeader.Source = bmi;
-        }
-
-
-
-        private void imageHeader_ImageOpened(object sender, RoutedEventArgs e)
-        {
-            LoadingPanel.Visibility = Visibility.Collapsed;
-        }
-
-        private async void imageHeader_ImageFailed(object sender, ExceptionRoutedEventArgs e)
-        {
-            LoadingPanel.Visibility = Visibility.Collapsed;
-            await new MessageDialog("Failed to load image").ShowAsync();
-        }
 
 
         #endregion

@@ -51,6 +51,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
+    <RootType FullName="Frink.UserControls.ImageLoaderUserControl" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="ItemContainerStyle" />
@@ -71,17 +72,14 @@
       <RootProperty Name="Property" />
       <RootProperty Name="Value" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.Image">
-      <RootEvent Name="ImageOpened" />
-      <RootEvent Name="ImageFailed" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
-      <RootProperty Name="IsIndeterminate" />
-      <RootProperty Name="IsEnabled" />
-    </RootType>
     <RootType FullName="Frink.NavigationListPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
       <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Image">
+      <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="ImageOpened" />
+      <RootEvent Name="ImageFailed" />
     </RootType>
   </Roots.RootTypes>
 </Roots>

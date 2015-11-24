@@ -9,4 +9,5 @@ App.xbf
 Frink.xr.xml
 MainPage.xbf
 NavigationListPage.xbf
+UserControls\ImageLoaderUserControl.xbf
 UserControls\MainNavigationUserControl.xbf

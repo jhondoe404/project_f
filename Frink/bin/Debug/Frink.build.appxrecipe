@@ -61,6 +61,9 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\NavigationListPage.xbf">
       <PackagePath>NavigationListPage.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ImageLoaderUserControl.xbf">
+      <PackagePath>UserControls\ImageLoaderUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\MainNavigationUserControl.xbf">
       <PackagePath>UserControls\MainNavigationUserControl.xbf</PackagePath>
     </AppxPackagedFile>
