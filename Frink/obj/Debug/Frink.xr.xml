@@ -31,6 +31,7 @@
       <RootProperty Name="IsActive" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="Margin" />
@@ -52,10 +53,16 @@
       <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Frink.UserControls.ImageLoaderUserControl" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+    <RootType FullName="ExtendedListView.ExtendedListView">
+      <RootProperty Name="IsPullToRefreshEnabled" />
+      <RootProperty Name="DataContext" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="PullToRefreshPartTemplate" />
+      <RootProperty Name="LoadingPartTemplate" />
+      <RootEvent Name="PullToRefreshRequested" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.Binding" />
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
@@ -63,7 +70,6 @@
       <RootProperty Name="Icon" />
       <RootProperty Name="Title" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem" />
     <RootType FullName="Windows.UI.Xaml.Controls.Control">
       <RootProperty Name="HorizontalContentAlignment" />

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>ARCHON-PC</Machine>
+    <WindowsUser>Ivan</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>6f66bb7b-1df2-4a74-82b4-bb4d417779f9</PackageIdentityName>
+    <IntermediateOutputPath>D:\Projekti\WindowsPhone\project_f\Frink\obj\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\Frink.exe">
+      <PackagePath>Frink.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\BackgroundRest\bin\Release\BackgroundRest.winmd">
+      <PackagePath>BackgroundRest.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView.dll">
+      <PackagePath>ExtendedListView.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\fontawesome-webfont.ttf">
+      <PackagePath>Assets\Fonts\fontawesome-webfont.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\NavigationListPage.xbf">
+      <PackagePath>NavigationListPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\UserControls\ImageLoaderUserControl.xbf">
+      <PackagePath>UserControls\ImageLoaderUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\UserControls\MainNavigationUserControl.xbf">
+      <PackagePath>UserControls\MainNavigationUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\Frink.xr.xml">
+      <PackagePath>Frink.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView\ExtendedListView.xr.xml">
+      <PackagePath>ExtendedListView\ExtendedListView.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView\Themes\Generic.xbf">
+      <PackagePath>ExtendedListView\Themes\Generic.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

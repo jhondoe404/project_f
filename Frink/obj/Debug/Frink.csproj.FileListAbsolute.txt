@@ -129,9 +129,11 @@ D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUserControl.g.cs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUserControl.xaml
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUserControl.xbf
-D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\Assets\Fonts\fontawesome-webfont.ttf
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ImageLoaderUserControl.g.i.cs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ImageLoaderUserControl.g.cs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ImageLoaderUserControl.xaml
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ImageLoaderUserControl.xbf
 D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ImageLoaderUserControl.xbf
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\ExtendedListView.dll
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\ExtendedListView.pri
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ExtendedListView.pri.xml

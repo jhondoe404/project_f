@@ -245,6 +245,8 @@ namespace Frink.Rest
         /// <returns>Array of bytes</returns>
         public async Task<byte[]> getFromWeb(byte[] body)
         {
+            Debug.WriteLine("[AsyncTask][getFromWeb] executing http request {0}", _url);
+
             HttpClient request = new HttpClient();
             Uri connectionUri = new Uri(_url);
 

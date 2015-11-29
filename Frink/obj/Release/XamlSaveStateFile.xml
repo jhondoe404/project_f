@@ -1,0 +1,8 @@
+<XamlCompilerSaveState>
+  <ReferenceAssemblyList>
+    <LocalAssembly PathName="d:\projekti\windowsphone\project_f\frink\obj\release\intermediatexaml\frink.exe" HashGuid="84e4445e-3cc1-0f98-92f1-4391769b6fae" />
+    <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\backgroundrest\bin\release\backgroundrest.winmd" HashGuid="b586a790-8b43-97a3-9794-4ce14aff9163" />
+    <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\packages\extendedlistview.0.0.5.5\lib\portable-win81+wpa81\extendedlistview.dll" HashGuid="1c154780-82cc-a952-5c90-1a1e95480b35" />
+    <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\packages\newtonsoft.json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\newtonsoft.json.dll" HashGuid="0b4cdfc1-2257-2e75-23cf-4052e97b309e" />
+  </ReferenceAssemblyList>
+</XamlCompilerSaveState>

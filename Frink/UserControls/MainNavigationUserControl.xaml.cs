@@ -79,16 +79,22 @@ namespace Frink.UserControls
 
             MainNavigationUserControl navigation = (MainNavigationUserControl)d;
 
-            if (navigation == null)
+            if (navigation == null || e == null || e.NewValue == null)
                 return;
 
             String text = ((string)e.NewValue).Replace("\\", "&#x") + ";";
+            //String text = ((string)e.NewValue).Replace("\\", "\\u");
 
             navigation.textBlockIcon.Foreground = DataHelper.Instance.themeColor_1;
             if (navigation.textBlockIcon.FontFamily != DataHelper.Instance.fontAwesome)
                 navigation.textBlockIcon.FontFamily = DataHelper.Instance.fontAwesome;
 
             navigation.textBlockIcon.Text = Windows.Data.Html.HtmlUtilities.ConvertToText(text);
+            //navigation.textBlockIcon.Text = text;
+
+#if DEBUG
+            Debug.WriteLine("[MainNavigationUserControl][UpdateIcon] {0} icon: {1}", text, navigation.textBlockIcon.Text);
+#endif
         }
 
 

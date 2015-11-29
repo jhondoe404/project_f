@@ -30,6 +30,8 @@ namespace Frink.UserControls
 
 
         private AsyncTask _loadImage;
+        public double imageWidth;
+        public double imageHeigth;
         public string ImageSource
         {
             get { return (string)GetValue(ImageSourceProperty); }
@@ -86,6 +88,7 @@ namespace Frink.UserControls
         private void imageHeader_ImageOpened(object sender, RoutedEventArgs e)
         {
             LoadingPanel.Visibility = Visibility.Collapsed;
+            Image image = (Image)sender;
         }
 
         private void imageHeader_ImageFailed(object sender, ExceptionRoutedEventArgs e)
@@ -126,7 +129,7 @@ namespace Frink.UserControls
                 if (!fileExists)
                 {
 #if DEBUG
-                    Debug.WriteLine("[ImageLoaderUserControl][loadImage] file does not exists");
+                    Debug.WriteLine("[ImageLoaderUserControl][loadImage] file does not exists {0}", fileName);
 #endif
                     showMessage(textBlockValidatingConnection);
                     if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
@@ -140,6 +143,10 @@ namespace Frink.UserControls
                             _loadImage = new AsyncTask();
 
                         _loadImage.setUrl(imagePath);
+#if DEBUG
+                        Debug.WriteLine("[ImageLoaderUserControl][loadImage] image to be loaded {0}", imagePath);
+#endif
+
                         var result = await _loadImage.execute();
 #if DEBUG
                         Debug.WriteLine("[ImageLoaderUserControl][loadImage] writing data to a local file");

@@ -1,10 +1,12 @@
 ﻿using Frink.Helpers;
+using Frink.Rest;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Resources;
 using Windows.ApplicationModel.Resources.Core;
@@ -48,6 +50,7 @@ namespace Frink
             }
 
             //startTask();
+            
         }
 
       
@@ -80,9 +83,81 @@ namespace Frink
         }
 
 
+        public static ScrollViewer GetScrollViewer(DependencyObject depObj)
+        {
+            if (depObj is ScrollViewer) return depObj as ScrollViewer;
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = VisualTreeHelper.GetChild(depObj, i);
+
+                var result = GetScrollViewer(child);
+                if (result != null) return result;
+            }
+            return null;
+        }
+
+        public static ScrollBar GetScrollBar(DependencyObject depObj)
+        {
+            if (depObj is ScrollBar) return depObj as ScrollBar;
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = VisualTreeHelper.GetChild(depObj, i);
+
+                var result = GetScrollBar(child);
+                if (result != null) return result;
+            }
+            return null;
+        }
+
+
+        public static ListView GetListView(DependencyObject depObj)
+        {
+            if (depObj is ListView) return depObj as ListView;
+
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = VisualTreeHelper.GetChild(depObj, i);
+
+                var result = GetListView(child);
+                if (result != null) return result;
+            }
+            return null;
+        }
+
+
 
         #endregion
         #region SCROLL VIEWVER 
+
+
+        
+        private async Task ListViewNavigationMain_PullToRefreshRequested(object sender, EventArgs e)
+        {
+#if DEBUG
+            Debug.WriteLine("[NavigationListPage][ListViewNavigationMain_PullToRefreshRequested] Refreshing the content");
+#endif
+            await Task.Delay(1000);
+
+            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                await RestService.getMenu();
+                if (DataHelper.Instance._themeModel == null)
+                {
+                    MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorLoadingData"));
+                    await message.ShowAsync();
+                }
+            }
+            else
+            {
+                MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoInternetConnection"));
+                await message.ShowAsync();
+            }
+        }
+
+
+
         #endregion
     }
 }

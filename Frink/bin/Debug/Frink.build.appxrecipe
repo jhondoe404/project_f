@@ -22,6 +22,9 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\BackgroundRest\bin\Debug\BackgroundRest.winmd">
       <PackagePath>BackgroundRest.winmd</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView.dll">
+      <PackagePath>ExtendedListView.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
@@ -69,6 +72,12 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\Frink.xr.xml">
       <PackagePath>Frink.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView\ExtendedListView.xr.xml">
+      <PackagePath>ExtendedListView\ExtendedListView.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView\Themes\Generic.xbf">
+      <PackagePath>ExtendedListView\Themes\Generic.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>

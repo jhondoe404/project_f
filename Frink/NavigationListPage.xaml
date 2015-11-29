@@ -4,37 +4,71 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Frink"
     xmlns:userControls="using:Frink.UserControls"
+    xmlns:extendedListView="using:ExtendedListView"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid
-        Background="White">
+    <Grid Background="White">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <userControls:ImageLoaderUserControl 
+        
+        <userControls:ImageLoaderUserControl
             Grid.Row="0"
             x:Name="imageHeader"/>
         
-        <ListView
+        <extendedListView:ExtendedListView
             Grid.Row="1"
-            x:Name="ListViewNavigationMain">
-            <ListView.ItemTemplate>
+            x:Name="ListViewNavigationMain"
+            IsPullToRefreshEnabled="True"
+            PullToRefreshRequested="ListViewNavigationMain_PullToRefreshRequested"
+            DataContext="{Binding}">
+            <extendedListView:ExtendedListView.ItemTemplate>
                 <DataTemplate x:Name="NavigationItem">
                     <userControls:MainNavigationUserControl
                         Icon="{Binding icon}"
                         Title="{Binding name}"/>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
+            </extendedListView:ExtendedListView.ItemTemplate>
+            <extendedListView:ExtendedListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+            </extendedListView:ExtendedListView.ItemContainerStyle>
+
+            <extendedListView:ExtendedListView.PullToRefreshPartTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Margin="25,0" 
+                        FontSize="20" 
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Center"
+                        Foreground="Black"
+                        x:Uid="textPullToRefresh"/>
+                </DataTemplate>
+            </extendedListView:ExtendedListView.PullToRefreshPartTemplate>
+            
+            <extendedListView:ExtendedListView.LoadingPartTemplate>
+                <DataTemplate>
+                    <StackPanel 
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                        <ProgressRing 
+                            IsActive="True" 
+                            VerticalAlignment="Center"
+                            Background="White"/>
+                        <TextBlock 
+                            x:Uid="textRefreshingProgress"                            
+                            Margin="25,0" 
+                            FontSize="20" 
+                            VerticalAlignment="Center" 
+                            Foreground="Black"/>
+                    </StackPanel>
+                </DataTemplate>
+            </extendedListView:ExtendedListView.LoadingPartTemplate>
+        </extendedListView:ExtendedListView>
     </Grid>
 </Page>
