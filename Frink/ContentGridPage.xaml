@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="Frink.ContentGridPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Frink"
+    xmlns:userControls="using:Frink.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid
+        x:Name="root"
+        Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <userControls:ImageLoaderUserControl
+            Grid.Row="0"
+            x:Name="imageHeader"
+            ImageSource="http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg"/>
+
+        <TextBlock
+            Grid.Row="0"
+            x:Name="textBlockDescription"
+            Text="no data"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Center"
+            FontSize="18" 
+            TextWrapping="WrapWholeWords"
+            Margin="10,0,10,10"/>
+
+        <GridView
+            Grid.Row="1"
+            x:Name="gridViewcontent"
+            IsItemClickEnabled="True"
+            ItemClick="ListViewContent_ItemClick"
+            SizeChanged="gridViewcontent_SizeChanged"
+            DataContext="{Binding}"
+            Margin="0">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Image
+                        Margin="0"
+                        Stretch="UniformToFill"
+                        Source="{Binding picture}"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid 
+                        MaximumRowsOrColumns="3" 
+                        Orientation="Horizontal" 
+                        HorizontalChildrenAlignment="Stretch" 
+                        VerticalChildrenAlignment="Stretch" />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="Margin" Value="0 0 0 0"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+        </GridView>
+    </Grid>
+</Page>

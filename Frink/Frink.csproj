@@ -86,16 +86,25 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentGridPage.xaml.cs">
+      <DependentUpon>ContentGridPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentTablePage.xaml.cs">
+      <DependentUpon>ContentTablePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\ParallaxConverter.cs" />
     <Compile Include="Helpers\ConstantsHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\EncryptHelper.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\JSONHelper.cs" />
+    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ColorScheme.cs" />
+    <Compile Include="Models\ContentItemModel.cs" />
+    <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\MenuItemModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\ThemeApplicationModel.cs" />
@@ -108,6 +117,9 @@
     <Compile Include="Rest\RestService.cs" />
     <Compile Include="UserControls\ImageLoaderUserControl.xaml.cs">
       <DependentUpon>ImageLoaderUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ListItemUserControl.xaml.cs">
+      <DependentUpon>ListItemUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MainNavigationUserControl.xaml.cs">
       <DependentUpon>MainNavigationUserControl.xaml</DependentUpon>
@@ -131,6 +143,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ContentGridPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContentTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -140,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ImageLoaderUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ListItemUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

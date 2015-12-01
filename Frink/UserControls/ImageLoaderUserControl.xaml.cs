@@ -29,6 +29,7 @@ namespace Frink.UserControls
 
 
 
+        BitmapImage bmi;
         private AsyncTask _loadImage;
         public double imageWidth;
         public double imageHeigth;
@@ -42,8 +43,36 @@ namespace Frink.UserControls
            (
                "ImageSource",
                typeof(string),
-               typeof(MainNavigationUserControl),
+               typeof(ImageLoaderUserControl),
                new PropertyMetadata(null, UpdateImageSource)
+           );
+
+        public double ImageHeight
+        {
+            get { return (double)GetValue(ImageHeightProperty); }
+            set { SetValue(ImageHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty ImageHeightProperty = DependencyProperty.Register
+           (
+               "ImageHeight",
+               typeof(double),
+               typeof(ImageLoaderUserControl),
+               new PropertyMetadata(null, UpdateImageHeight)
+           );
+
+        public double ImageWidth
+        {
+            get { return (double)GetValue(ImageWidthProperty); }
+            set { SetValue(ImageWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty ImageWidthProperty = DependencyProperty.Register
+           (
+               "ImageWidth",
+               typeof(double),
+               typeof(ImageLoaderUserControl),
+               new PropertyMetadata(null, UpdateImageWidth)
            );
 
 
@@ -76,6 +105,33 @@ namespace Frink.UserControls
                 return;
 
             userControl.loadImage((string)e.NewValue);
+        }
+
+        private static void UpdateImageWidth(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d == null || e == null || e.OldValue == e.NewValue)
+                return;
+
+            ImageLoaderUserControl userControl = (ImageLoaderUserControl)d;
+
+            if (userControl == null || e.NewValue == null)
+                return;
+
+            userControl.imageHeader.Width = (double)e.NewValue;
+        }
+
+
+        private static void UpdateImageHeight(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d == null || e == null || e.OldValue == e.NewValue)
+                return;
+
+            ImageLoaderUserControl userControl = (ImageLoaderUserControl)d;
+
+            if (userControl == null || e.NewValue == null)
+                return;
+
+            userControl.imageHeader.Height = (double)e.NewValue;
         }
 
 
@@ -112,6 +168,18 @@ namespace Frink.UserControls
 #if DEBUG
             Debug.WriteLine("[ImageLoaderUserControl][loadImage] loading image");
 #endif
+            if (imageHeader.Source != null)
+                return;
+
+            if (bmi != null)
+            {                
+#if DEBUG
+                Debug.WriteLine("[ImageLoaderUserControl][loadImage] loading existing image from cache");
+#endif
+                imageHeader.Source = bmi;
+                return;
+            }
+
             showMessage(textBlockLoadingImage);
             progressRing.Visibility = Visibility.Visible;
             string filePath = imagePath;
@@ -148,10 +216,22 @@ namespace Frink.UserControls
 #endif
 
                         var result = await _loadImage.execute();
+
+                        if (result != null)
+                        {
 #if DEBUG
-                        Debug.WriteLine("[ImageLoaderUserControl][loadImage] writing data to a local file");
+                            Debug.WriteLine("[ImageLoaderUserControl][loadImage] writing data to a local file");
 #endif
-                        await FileHelper.WriteToFile(result, fileName, ApplicationData.Current.TemporaryFolder);
+                            await FileHelper.WriteToFile(result, fileName, ApplicationData.Current.TemporaryFolder);
+                        }
+                        else
+                        {
+#if DEBUG
+                            Debug.WriteLine("[ImageLoaderUserControl][loadImage] failed loading the image");
+#endif
+                            progressRing.Visibility = Visibility.Collapsed;
+                            showMessage(textBlockErrorLoading);
+                        }
                     }
                     else
                     {
@@ -182,7 +262,7 @@ namespace Frink.UserControls
 
             if (filePath != null)
             {
-                BitmapImage bmi = new BitmapImage();
+                bmi = new BitmapImage();
                 Uri myUri = new Uri(filePath, UriKind.Absolute);
                 bmi.CreateOptions = BitmapCreateOptions.None;
                 bmi.UriSource = myUri;

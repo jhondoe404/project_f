@@ -2,6 +2,7 @@
 using Frink.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -71,6 +72,50 @@ namespace Frink.Rest
                 return false;
 
             return etag_one == etag_two;
+        }
+
+
+        async public static Task getEntry(String url)
+        {
+            AsyncTask asynctask = new AsyncTask()
+                        .setUrl(url);
+
+            string fileName = url.Substring(url.LastIndexOf('/') + 1);
+            fileName = "entry" + fileName + ".txt";
+            bool fileExists = await FileHelper.ValidateFile(ApplicationData.Current.TemporaryFolder, fileName);
+            string etag = null;
+            if (fileExists)
+            {
+                String[] fromfile = await FileHelper.readHttpFromFile(fileName);
+                if (fromfile.Length > 1)
+                {
+                    asynctask.setETag(fromfile[1]);
+                    etag = fromfile[1];
+                }
+
+                asynctask.setETag(etag);
+                DataHelper.Instance._contentItemModel = await JSONHelper.ParseDataObservableCollection<ContentItemModel>(fromfile[0]);
+            }
+
+            byte[] response = await asynctask.execute();
+
+            if (response != null && !isEtags(asynctask._header[ConstantsHelper.API_ETAG], etag))
+            {
+                String responseFormatted = System.Text.Encoding.UTF8.GetString(response, 0, response.Length);
+                await FileHelper.writeHttpToFile(responseFormatted, fileName, asynctask._header[ConstantsHelper.API_ETAG]);
+                DataHelper.Instance._contentItemModel = await JSONHelper.ParseDataObservableCollection<ContentItemModel>(responseFormatted);
+            }
+            else
+            {
+#if DEBUG
+                Debug.WriteLine("[RestService][getEntry] Response was an empty object ");
+#endif
+            }
+
+            // TODO: when better object cleaner method is found, 
+            // simply set the objects to null and let GC clear them from the memory
+            asynctask = null;
+            response = null;
         }
     }
 }

@@ -25,6 +25,8 @@
             x:Name="ListViewNavigationMain"
             IsPullToRefreshEnabled="True"
                                                                                   
+                                                        
+            IsItemClickEnabled="True"
             DataContext="{Binding}">
             <extendedListView:ExtendedListView.ItemTemplate>
                 <DataTemplate x:Name="NavigationItem">

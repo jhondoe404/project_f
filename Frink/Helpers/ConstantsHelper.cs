@@ -28,11 +28,21 @@ namespace Frink.Helpers
 
 
 
-
         public const String LOCALE_PASSWORD = "thisisanawasomecoolpassword";
         public const String LOCALE_KEY_APPLICATION_THEME = "applicationtheme";
 
         public const String LOCAL_FILE_APPLICATION_THEME = "apptheme.txt";
+
+
+
+        #endregion
+        #region THEME
+
+
+
+        public const String NAVIGATION_TYPE_GRID = "CollectionView";
+        public const String NAVIGATION_TYPE_TABLE = "TableView";
+        public const String NAVIGATION_TYPE_LOCATION = "LocationView";
 
 
 

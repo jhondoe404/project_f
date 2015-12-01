@@ -14,7 +14,8 @@
             VerticalAlignment="Top"
             x:Name="imageHeader" 
                                                   
-                                                  />
+                                                 
+            Stretch="UniformToFill"/>
 
         <StackPanel x:Name="LoadingPanel" VerticalAlignment="Top">
             <ProgressRing x:Name="progressRing" IsEnabled="True" />
