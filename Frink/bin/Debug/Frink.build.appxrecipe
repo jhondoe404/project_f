@@ -25,6 +25,12 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView.dll">
       <PackagePath>ExtendedListView.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp.dll">
+      <PackagePath>HockeyApp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.Core.2.2.2\lib\portable-net45+win8+wp8+wpa81+win81\HockeyAppPCL.dll">
+      <PackagePath>HockeyAppPCL.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
@@ -87,6 +93,30 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView\Themes\Generic.xbf">
       <PackagePath>ExtendedListView\Themes\Generic.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\HockeyApp.xr.xml">
+      <PackagePath>HockeyApp\HockeyApp.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\Assets\windows_phone.png">
+      <PackagePath>HockeyApp\Assets\windows_phone.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\Assets\wp8releasenotes.css">
+      <PackagePath>HockeyApp\Assets\wp8releasenotes.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\Views\FeedbackFormPage.xbf">
+      <PackagePath>HockeyApp\Views\FeedbackFormPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\Views\FeedbackImagePage.xbf">
+      <PackagePath>HockeyApp\Views\FeedbackImagePage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\Views\FeedbackMainPage.xbf">
+      <PackagePath>HockeyApp\Views\FeedbackMainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\Views\LoginPage.xbf">
+      <PackagePath>HockeyApp\Views\LoginPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\HockeySDK.WINRT.2.2.2\lib\portable-wpa81\HockeyApp\Views\UpdatePage.xbf">
+      <PackagePath>HockeyApp\Views\UpdatePage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>

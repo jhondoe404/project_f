@@ -6,8 +6,11 @@ Assets\Square71x71Logo.scale-240.png
 Assets\StoreLogo.scale-240.png
 Assets\WideLogo.scale-240.png
 App.xbf
+ContentGridPage.xbf
+ContentTablePage.xbf
 Frink.xr.xml
 MainPage.xbf
 NavigationListPage.xbf
 UserControls\ImageLoaderUserControl.xbf
+UserControls\ListItemUserControl.xbf
 UserControls\MainNavigationUserControl.xbf

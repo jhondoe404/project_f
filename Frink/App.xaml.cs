@@ -1,4 +1,5 @@
-﻿using Frink.Helpers;
+﻿using HockeyApp;
+using Frink.Helpers;
 using Frink.Models;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,8 @@ namespace Frink
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            HockeyClient.Current.Configure("2c07ec5ac57e4d4f88cb1699614005bf");
         }
 
         /// <summary>
@@ -125,11 +128,14 @@ namespace Frink
                             throw new Exception("Failed to create initial navigation page");
                         }
                     }
-                }                
+                }            
             
-
             // Ensure the current window is active
             Window.Current.Activate();
+            await HockeyClient.Current.SendCrashesAsync();
+#if WINDOWS_PHONE_APP
+            await HockeyClient.Current.CheckForAppUpdateAsync();
+#endif
         }
 
         /// <summary>

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Resources;
+using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,10 +23,22 @@ namespace Frink
     /// </summary>
     public sealed partial class NavigationListPage : Page
     {
+        #region CLASS CONSTRUCT
+
+
+
         public NavigationListPage()
         {
             this.InitializeComponent();
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
+
+
+
+        #endregion
+        #region LIFECYCLE METHODS
+
+
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -41,11 +54,21 @@ namespace Frink
             }
 
             //startTask();
-            
         }
 
-      
+        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame != null && rootFrame.CanGoBack)
+            {
+                rootFrame.GoBack();
+                e.Handled = true;
+            }
+        }
 
+
+
+        #endregion
         #region CUSTOM METHODS
 
 
@@ -153,6 +176,13 @@ namespace Frink
             MenuItemModel item = (MenuItemModel)e.ClickedItem;
             if (item == null || sender == null)
                 return;
+
+            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoInternetConnection"));
+                await message.ShowAsync();
+                return;
+            }
 #if DEBUG
             Debug.WriteLine("[NavigationListPage][Itemclick] {0}", item.name);
 #endif

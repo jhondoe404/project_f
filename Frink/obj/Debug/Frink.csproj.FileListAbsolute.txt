@@ -152,3 +152,10 @@ D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentGridPage.g.i.cs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentGridPage.g.cs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentGridPage.xaml
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentGridPage.xbf
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyApp.dll
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyAppPCL.dll
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyApp.pdb
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyApp.pri
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyAppPCL.pdb
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyAppPCL.xml
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\HockeyApp.pri.xml
