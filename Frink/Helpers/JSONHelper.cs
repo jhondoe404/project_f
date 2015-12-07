@@ -7,6 +7,19 @@ using Windows.UI.Popups;
 
 namespace Frink.Helpers
 {
+    /**
+     * 
+     * \brief Helper class that serializes JSON strings into object(s)
+     * 
+     * \author  Ivan Gudelj
+     * \date    07.12.2015.
+     * \version 1.0
+     * \copyright   
+     *      This code and information is provided "as is" without warranty of
+     *      any kind, either expressed or implied, including but not limited to
+     *      the implied warranties of merchantability and/or fitness for a
+     *      particular purpose.
+     */
     class JSONHelper
     {
         /// <summary>

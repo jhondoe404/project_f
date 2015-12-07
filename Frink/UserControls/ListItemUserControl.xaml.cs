@@ -1,20 +1,9 @@
 ﻿using Frink.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -129,16 +118,22 @@ namespace Frink.UserControls
 
         private static void UpdateSource(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e == null || d == null || e.NewValue == e.OldValue)
+            if (e == null || d == null || e.NewValue == null 
+                || ((string) e.NewValue).Trim().Equals("") || e.NewValue == e.OldValue
+                || !e.NewValue.ToString().Contains("http"))
                 return;
 
             ListItemUserControl item = (ListItemUserControl)d;
 
-            if (item == null || e.NewValue == null)
+            if (item == null)
                 return;
 
             BitmapImage bmi = new BitmapImage();
-            Uri myUri = new Uri((string)e.NewValue + "?dim720", UriKind.Absolute);
+            String url = (string)e.NewValue + "?dim720";
+#if DEBUG
+            Debug.WriteLine("[ListItemUserControl][UpdateSource] URL of the image {0}", url);
+#endif
+            Uri myUri = new Uri(url, UriKind.Absolute);
             bmi.CreateOptions = BitmapCreateOptions.None;
             bmi.UriSource = myUri;
             item.imageLoaderImage.Source = bmi;

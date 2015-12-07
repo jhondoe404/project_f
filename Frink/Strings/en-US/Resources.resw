@@ -126,6 +126,9 @@
   <data name="errorNavigationNotSupported" xml:space="preserve">
     <value>Navigation item type not supported yet.</value>
   </data>
+  <data name="errorNoData" xml:space="preserve">
+    <value>No data</value>
+  </data>
   <data name="errorNoInternetConnection" xml:space="preserve">
     <value>No connection to the internet</value>
     <comment>Status message indicating connectivity to the internet</comment>

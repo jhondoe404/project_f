@@ -8,6 +8,20 @@ using Windows.Storage.Streams;
 
 namespace Frink.Helpers
 {
+    /**
+     * 
+     * \brief Helper class containing methods used soley for the communication 
+     * with the files
+     * 
+     * \author  Ivan Gudelj
+     * \date    07.12.2015.
+     * \version 1.0
+     * \copyright   
+     *      This code and information is provided "as is" without warranty of
+     *      any kind, either expressed or implied, including but not limited to
+     *      the implied warranties of merchantability and/or fitness for a
+     *      particular purpose.
+     */
     public static class FileHelper
     {
         #region FILE HELPERS
@@ -134,6 +148,7 @@ namespace Frink.Helpers
         #region HTTP FILE HELPERS
 
 
+
         /// <summary>
         ///     Writes a http request to a file, encrypted, with it's etag
         /// </summary>
@@ -170,8 +185,6 @@ namespace Frink.Helpers
 
             return readfilesplit;
         }
-
-
 
 
 

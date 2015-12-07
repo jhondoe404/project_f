@@ -2,24 +2,16 @@
 using Frink.Helpers;
 using Frink.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Windows.Phone.UI.Input;
+using Frink.Delegates;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -41,8 +33,11 @@ namespace Frink
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
 
+            HardwareButtons.BackPressed += NavigationDelegate.HardwareButtons_BackPressed;
             HockeyClient.Current.Configure("2c07ec5ac57e4d4f88cb1699614005bf");
         }
+
+
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

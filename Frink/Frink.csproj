@@ -96,6 +96,7 @@
       <DependentUpon>ContentTablePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ParallaxConverter.cs" />
+    <Compile Include="Delegates\NavigationDelegate.cs" />
     <Compile Include="Helpers\ConstantsHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\EncryptHelper.cs" />

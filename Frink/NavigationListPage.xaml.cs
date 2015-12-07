@@ -1,4 +1,5 @@
-﻿using Frink.Helpers;
+﻿using Frink.Delegates;
+using Frink.Helpers;
 using Frink.Models;
 using Frink.Rest;
 using System;
@@ -30,7 +31,6 @@ namespace Frink
         public NavigationListPage()
         {
             this.InitializeComponent();
-            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
 
 
@@ -47,23 +47,15 @@ namespace Frink
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)       
         {
+            if (e == null)
+                return;
+
             if (DataHelper.Instance._themeModel != null)
             {
                 ListViewNavigationMain.ItemsSource = DataHelper.Instance._themeModel.menu.items;
                 imageHeader.ImageSource = DataHelper.Instance._themeModel.menu.image;
             }
-
             //startTask();
-        }
-
-        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame != null && rootFrame.CanGoBack)
-            {
-                rootFrame.GoBack();
-                e.Handled = true;
-            }
         }
 
 

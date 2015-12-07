@@ -275,16 +275,15 @@ namespace Frink.Rest
             using (var reader = DataReader.FromBuffer(stream))
                 reader.ReadBytes(readstream);
 
+#if DEBUG
             Debug.WriteLine("[AsyncTask][getFromWeb] it contains an etag: " + response.Headers["ETag"]);
-
+#endif
             _header = response.Headers;
             request.Dispose();
             response.Dispose();            
             return readstream;
         }
 
-
-      
 
 
         #endregion
