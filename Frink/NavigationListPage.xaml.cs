@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Resources;
 using Windows.Phone.UI.Input;
+using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -51,12 +52,12 @@ namespace Frink
                 return;
 
             if (DataHelper.Instance._themeModel != null)
-            {
+            {                
                 ListViewNavigationMain.ItemsSource = DataHelper.Instance._themeModel.menu.items;
-                imageHeader.ImageSource = DataHelper.Instance._themeModel.menu.image;
+                imageHeader.ImageSource = DataHelper.Instance._themeModel.menu.image;                                
             }
             //startTask();
-        }
+        } 
 
 
 

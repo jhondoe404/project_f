@@ -28,9 +28,6 @@ namespace Frink
         public ContentGridPage()
         {
             this.InitializeComponent();
-
-            if (DataHelper.Instance.themeColor_1 != null)
-                textBlockDescription.Foreground = DataHelper.Instance.themeColor_1;
         }
 
 

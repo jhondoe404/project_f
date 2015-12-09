@@ -29,10 +29,59 @@
             DataContext="{Binding}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <userControls:ListItemUserControl
-                        Title="{Binding title}"
-                        Description="{Binding createdAt}"
-                        Source="{Binding picture}"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Grid.RowSpan="2"
+                            x:Name="imageLoaderImage" 
+                            Width="54"
+                            Height="54"
+                            Stretch="UniformToFill"
+                            Source="{Binding picture}"
+                            Margin="10, 0, 10, 0"/>
+
+                        <TextBlock
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            Foreground="Black"
+                            FontSize="18"
+                            x:Name="textBlockTitle"
+                            Text="{Binding title}"
+                            Margin="5,5,10,5"/>
+
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            FontSize="16"
+                            Margin="5,0,10,5"
+                            x:Name="textBlockDescription"
+                            Text="{Binding createdAt}"
+                            Foreground="{StaticResource Color1}"/>
+
+                        <Line            
+                            x:Name="Separator"
+                            Grid.Row="2" 
+                            Grid.ColumnSpan="2"
+                            X2="1"
+                            Stretch="Fill"
+                            Fill="White"
+                            StrokeThickness="1"
+                            Stroke="{StaticResource Color3}"
+                            Margin="10,2,10,2"/>
+
+                    </Grid>
+
                 </DataTemplate>
             </ListView.ItemTemplate>
 

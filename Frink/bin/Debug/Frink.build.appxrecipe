@@ -82,9 +82,6 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ListItemUserControl.xbf">
       <PackagePath>UserControls\ListItemUserControl.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\MainNavigationUserControl.xbf">
-      <PackagePath>UserControls\MainNavigationUserControl.xbf</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\Frink.xr.xml">
       <PackagePath>Frink.xr.xml</PackagePath>
     </AppxPackagedFile>

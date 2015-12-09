@@ -31,7 +31,8 @@
             HorizontalAlignment="Center"
             FontSize="18" 
             TextWrapping="WrapWholeWords"
-            Margin="10,0,10,10"/>
+            Margin="10,0,10,10"
+            Foreground="{StaticResource Color1}"/>
 
         <GridView x:ConnectionId='1'
             Grid.Row="1"

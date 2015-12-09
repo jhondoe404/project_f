@@ -15,24 +15,58 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <userControls:ImageLoaderUserControl
             Grid.Row="0"
             x:Name="imageHeader"/>
-        
         <extendedListView:ExtendedListView x:ConnectionId='1'
             Grid.Row="1"
             x:Name="ListViewNavigationMain"
             IsPullToRefreshEnabled="True"
                                                                                   
                                                         
-            IsItemClickEnabled="True"
-            DataContext="{Binding}">
+            IsItemClickEnabled="True">
+  
             <extendedListView:ExtendedListView.ItemTemplate>
                 <DataTemplate x:Name="NavigationItem">
-                    <userControls:MainNavigationUserControl
-                        Icon="{Binding icon}"
-                        Title="{Binding name}"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                            <TextBlock
+                                x:Name="textBlockIcon"
+                                FontSize="16"
+                                VerticalAlignment="Center"
+                                Margin="10" 
+                                CacheMode="BitmapCache"
+                                Text="{Binding icon}"                                
+                                FontFamily="{StaticResource FontAwesome}"
+                                Foreground="{StaticResource Color1}"/>
+
+                            <TextBlock
+                                Foreground="Black"
+                                FontSize="16"
+                                x:Name="textBlockTitle"
+                                VerticalAlignment="Center"
+                                Text="{Binding name}"
+                                Margin="10" />
+                        </StackPanel>
+
+                        <Line            
+                            x:Name="Separator"
+                            Grid.Row="1" 
+                            X2="1"
+                            Stretch="Fill"
+                            Fill="White"
+                            StrokeThickness="1"
+                            Stroke="{StaticResource Color3}"
+                            Margin="10,2,10,2"/>
+                    </Grid>
                 </DataTemplate>
             </extendedListView:ExtendedListView.ItemTemplate>
             <extendedListView:ExtendedListView.ItemContainerStyle>
@@ -52,7 +86,7 @@
                         x:Uid="textPullToRefresh"/>
                 </DataTemplate>
             </extendedListView:ExtendedListView.PullToRefreshPartTemplate>
-            
+
             <extendedListView:ExtendedListView.LoadingPartTemplate>
                 <DataTemplate>
                     <StackPanel 

@@ -114,6 +114,7 @@ namespace Frink
 #endif
                         String[] apptheme = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
                         DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(apptheme[0]);
+                        ThemeDelegate.refreshTheme();
 
                         // When the navigation stack isn't restored navigate to the first page,
                         // configuring the new page by passing required information as a navigation

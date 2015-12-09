@@ -41,10 +41,10 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             HorizontalAlignment="Left"
             Grid.Column="1"
             Grid.Row="1"
-            Foreground="Black"
             FontSize="16"
             Margin="5,0,10,5"
-            x:Name="textBlockDescription"/>
+            x:Name="textBlockDescription"
+            Foreground="{StaticResource Color1}"/>
 
         <Line            
             x:Name="Separator"
@@ -54,7 +54,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             Stretch="Fill"
             Fill="White"
             StrokeThickness="1"
-            Stroke="Black"
+            Stroke="{StaticResource Color3}"
             Margin="10,2,10,2"/>
 
     </Grid>

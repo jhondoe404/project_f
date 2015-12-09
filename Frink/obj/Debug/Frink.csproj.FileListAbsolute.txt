@@ -124,11 +124,6 @@ D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ProjectArchitectures.txt
 D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\BackgroundRest.winmd
 D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\BackgroundRest.pdb
 D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\BackgroundRest.pri
-D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\MainNavigationUserControl.xbf
-D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUserControl.g.i.cs
-D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUserControl.g.cs
-D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUserControl.xaml
-D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\MainNavigationUserControl.xbf
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ImageLoaderUserControl.g.i.cs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ImageLoaderUserControl.g.cs
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ImageLoaderUserControl.xaml

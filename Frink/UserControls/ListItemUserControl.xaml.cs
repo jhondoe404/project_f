@@ -69,11 +69,6 @@ namespace Frink.UserControls
         public ListItemUserControl()
         {
             this.InitializeComponent();
-            if (DataHelper.Instance.themeColor_3 != null)
-                Separator.Stroke = DataHelper.Instance.themeColor_3;
-
-            if (DataHelper.Instance.themeColor_1 != null)
-                textBlockDescription.Foreground = DataHelper.Instance.themeColor_1;
         }
 
 

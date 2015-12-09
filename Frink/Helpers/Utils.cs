@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Frink.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,10 @@ namespace Frink.Helpers
      */
     class Utils
     {
+        #region SERVER DATE
+
+
+
         /// <summary>
         ///     Formats server date string into a usable 
         ///     format.
@@ -38,5 +44,33 @@ namespace Frink.Helpers
             string strMonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
             return strMonthName + " " + day + ", " + year;
         }
+
+
+        /// <summary>
+        ///     Formats all of the entry item model data
+        /// </summary>
+        public static void formatAllContentItemModelData()
+        {
+            if (DataHelper.Instance._contentItemModel != null)
+            {
+                ObservableCollection<ContentItemModel> items = DataHelper.Instance._contentItemModel;
+                for (int i = 0; i < items.Count; i++)
+                {
+                    if (DataHelper.Instance._contentItemModel[i].createdAt != null)
+                    {
+                        DataHelper.Instance._contentItemModel[i].createdAt = formatServerDate(DataHelper.Instance._contentItemModel[i].createdAt);
+                    }
+
+                    if (DataHelper.Instance._contentItemModel[i].updatedAt != null)
+                    {
+                        DataHelper.Instance._contentItemModel[i].updatedAt = formatServerDate(DataHelper.Instance._contentItemModel[i].updatedAt);
+                    }
+                }
+            }            
+        }
+
+
+
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using Frink.Helpers;
+﻿using Frink.Delegates;
+using Frink.Helpers;
 using Frink.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Media;
 
 namespace Frink.Rest
 {
@@ -34,7 +38,7 @@ namespace Frink.Rest
                     etag = fromfile[1];
                 }
                     
-                DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(fromfile[0]);
+                DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(fromfile[0]);                
             }
 
             byte[] response = await asynctask.execute();
@@ -57,6 +61,8 @@ namespace Frink.Rest
             // simply set the objects to null and let GC clear them from the memory
             asynctask = null;
             response = null;
+
+            ThemeDelegate.refreshTheme();
         }
 
 
@@ -116,6 +122,8 @@ namespace Frink.Rest
             // simply set the objects to null and let GC clear them from the memory
             asynctask = null;
             response = null;
+
+            Utils.formatAllContentItemModelData();
         }
     }
 }

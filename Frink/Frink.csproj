@@ -95,8 +95,8 @@
     <Compile Include="ContentTablePage.xaml.cs">
       <DependentUpon>ContentTablePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\ParallaxConverter.cs" />
     <Compile Include="Delegates\NavigationDelegate.cs" />
+    <Compile Include="Delegates\ThemeDelegate.cs" />
     <Compile Include="Helpers\ConstantsHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Helpers\EncryptHelper.cs" />
@@ -124,9 +124,6 @@
     </Compile>
     <Compile Include="UserControls\ListItemUserControl.xaml.cs">
       <DependentUpon>ListItemUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\MainNavigationUserControl.xaml.cs">
-      <DependentUpon>MainNavigationUserControl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -168,10 +165,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ListItemUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\MainNavigationUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
