@@ -49,23 +49,11 @@ namespace Frink
 #endif
             if (e == null)
                 return;
-
-            string myPages = "";
-            foreach (PageStackEntry page in Frame.BackStack)
-            {
-                myPages += page.SourcePageType.ToString() + "\n";
-            }
-#if DEBUG
-            Debug.WriteLine("[ContentGridPage][OnNavigatedTo] pages {0}", myPages);
-#endif
-
-            MenuItemModel item = e.Parameter as MenuItemModel;
-            var bs = Frame.BackStack.Where(b => b.SourcePageType.Name == "NavigationListPage").FirstOrDefault();
-            Frame.BackStack.Add(bs);
+          
+            MenuItemModel item = e.Parameter as MenuItemModel;            
 #if DEBUG
             Debug.WriteLine("[ContentGridPage][OnNavigatedTo] {0}", item.type);
 #endif
-
             await RestService.getEntry(item.source);
             if (DataHelper.Instance._contentItemModel != null && DataHelper.Instance._contentItemModel.Count > 0)
             {

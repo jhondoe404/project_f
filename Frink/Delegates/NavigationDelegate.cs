@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +39,16 @@ namespace Frink.Delegates
         public static void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             Frame frame = Window.Current.Content as Frame;
+#if DEBUG
+            var backstack = frame.BackStack;
+            foreach (var item in backstack)
+            {
+                Debug.WriteLine("[NavigationDelegate][BackPressed] Full name: {0}", 
+                    item.SourcePageType.FullName);
+                
+            }
+            //Debug.WriteLine("[NavigationDelegate][BackPressed] {0}", frame.ContentTemplate.ToString());
+#endif
             if (frame == null)
             {
                 return;
@@ -45,8 +56,19 @@ namespace Frink.Delegates
 
             if (frame.CanGoBack)
             {
-                frame.GoBack();
-                e.Handled = true;
+                try
+                {
+                    frame.GoBack();
+                    if (e != null)
+                        e.Handled = true;
+                }
+                catch (System.NullReferenceException error)
+                {
+#if DEBUG
+                    Debug.WriteLine("[NavigationDelegate][BackPressed] error {0}", error.Message);
+#endif
+                    return;
+                }
             }
         }
 
