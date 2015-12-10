@@ -148,39 +148,41 @@ namespace Frink.Frink_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[15];
-            _typeNameTable[0] = "Frink.UserControls.ImageLoaderUserControl";
-            _typeNameTable[1] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[2] = "String";
-            _typeNameTable[3] = "Double";
-            _typeNameTable[4] = "Frink.ContentGridPage";
-            _typeNameTable[5] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[6] = "Frink.ContentTablePage";
-            _typeNameTable[7] = "Frink.MainPage";
-            _typeNameTable[8] = "ExtendedListView.ExtendedListView";
-            _typeNameTable[9] = "Windows.UI.Xaml.Controls.ListView";
-            _typeNameTable[10] = "Windows.UI.Xaml.Controls.ItemsControl";
-            _typeNameTable[11] = "Boolean";
-            _typeNameTable[12] = "Windows.UI.Xaml.DataTemplate";
-            _typeNameTable[13] = "Frink.NavigationListPage";
-            _typeNameTable[14] = "Frink.UserControls.ListItemUserControl";
+            _typeNameTable = new string[16];
+            _typeNameTable[0] = "Frink.ContentDetailsPage";
+            _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[3] = "Frink.ContentGridPage";
+            _typeNameTable[4] = "Frink.ContentTablePage";
+            _typeNameTable[5] = "Frink.MainPage";
+            _typeNameTable[6] = "ExtendedListView.ExtendedListView";
+            _typeNameTable[7] = "Windows.UI.Xaml.Controls.ListView";
+            _typeNameTable[8] = "Windows.UI.Xaml.Controls.ItemsControl";
+            _typeNameTable[9] = "Boolean";
+            _typeNameTable[10] = "Windows.UI.Xaml.DataTemplate";
+            _typeNameTable[11] = "Frink.NavigationListPage";
+            _typeNameTable[12] = "Frink.UserControls.ImageLoaderUserControl";
+            _typeNameTable[13] = "String";
+            _typeNameTable[14] = "Double";
+            _typeNameTable[15] = "Frink.UserControls.ListItemUserControl";
 
-            _typeTable = new global::System.Type[15];
-            _typeTable[0] = typeof(global::Frink.UserControls.ImageLoaderUserControl);
-            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[2] = typeof(global::System.String);
-            _typeTable[3] = typeof(global::System.Double);
-            _typeTable[4] = typeof(global::Frink.ContentGridPage);
-            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[6] = typeof(global::Frink.ContentTablePage);
-            _typeTable[7] = typeof(global::Frink.MainPage);
-            _typeTable[8] = typeof(global::ExtendedListView.ExtendedListView);
-            _typeTable[9] = typeof(global::Windows.UI.Xaml.Controls.ListView);
-            _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.ItemsControl);
-            _typeTable[11] = typeof(global::System.Boolean);
-            _typeTable[12] = typeof(global::Windows.UI.Xaml.DataTemplate);
-            _typeTable[13] = typeof(global::Frink.NavigationListPage);
-            _typeTable[14] = typeof(global::Frink.UserControls.ListItemUserControl);
+            _typeTable = new global::System.Type[16];
+            _typeTable[0] = typeof(global::Frink.ContentDetailsPage);
+            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[3] = typeof(global::Frink.ContentGridPage);
+            _typeTable[4] = typeof(global::Frink.ContentTablePage);
+            _typeTable[5] = typeof(global::Frink.MainPage);
+            _typeTable[6] = typeof(global::ExtendedListView.ExtendedListView);
+            _typeTable[7] = typeof(global::Windows.UI.Xaml.Controls.ListView);
+            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.ItemsControl);
+            _typeTable[9] = typeof(global::System.Boolean);
+            _typeTable[10] = typeof(global::Windows.UI.Xaml.DataTemplate);
+            _typeTable[11] = typeof(global::Frink.NavigationListPage);
+            _typeTable[12] = typeof(global::Frink.UserControls.ImageLoaderUserControl);
+            _typeTable[13] = typeof(global::System.String);
+            _typeTable[14] = typeof(global::System.Double);
+            _typeTable[15] = typeof(global::Frink.UserControls.ListItemUserControl);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -215,13 +217,14 @@ namespace Frink.Frink_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_ImageLoaderUserControl() { return new global::Frink.UserControls.ImageLoaderUserControl(); }
-        private object Activate_4_ContentGridPage() { return new global::Frink.ContentGridPage(); }
-        private object Activate_6_ContentTablePage() { return new global::Frink.ContentTablePage(); }
-        private object Activate_7_MainPage() { return new global::Frink.MainPage(); }
-        private object Activate_8_ExtendedListView() { return new global::ExtendedListView.ExtendedListView(); }
-        private object Activate_13_NavigationListPage() { return new global::Frink.NavigationListPage(); }
-        private object Activate_14_ListItemUserControl() { return new global::Frink.UserControls.ListItemUserControl(); }
+        private object Activate_0_ContentDetailsPage() { return new global::Frink.ContentDetailsPage(); }
+        private object Activate_3_ContentGridPage() { return new global::Frink.ContentGridPage(); }
+        private object Activate_4_ContentTablePage() { return new global::Frink.ContentTablePage(); }
+        private object Activate_5_MainPage() { return new global::Frink.MainPage(); }
+        private object Activate_6_ExtendedListView() { return new global::ExtendedListView.ExtendedListView(); }
+        private object Activate_11_NavigationListPage() { return new global::Frink.NavigationListPage(); }
+        private object Activate_12_ImageLoaderUserControl() { return new global::Frink.UserControls.ImageLoaderUserControl(); }
+        private object Activate_15_ListItemUserControl() { return new global::Frink.UserControls.ListItemUserControl(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -233,56 +236,45 @@ namespace Frink.Frink_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  Frink.UserControls.ImageLoaderUserControl
-                userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_0_ImageLoaderUserControl;
-                userType.AddMemberName("ImageSource");
-                userType.AddMemberName("ImageHeight");
-                userType.AddMemberName("ImageWidth");
-                userType.SetIsLocalType();
-                xamlType = userType;
-                break;
-
-            case 1:   //  Windows.UI.Xaml.Controls.UserControl
-                xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 2:   //  String
-                xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 3:   //  Double
-                xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
-                break;
-
-            case 4:   //  Frink.ContentGridPage
+            case 0:   //  Frink.ContentDetailsPage
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_4_ContentGridPage;
+                userType.Activator = Activate_0_ContentDetailsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 5:   //  Windows.UI.Xaml.Controls.Page
+            case 1:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  Frink.ContentTablePage
+            case 2:   //  Windows.UI.Xaml.Controls.UserControl
+                xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 3:   //  Frink.ContentGridPage
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_6_ContentTablePage;
+                userType.Activator = Activate_3_ContentGridPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  Frink.MainPage
+            case 4:   //  Frink.ContentTablePage
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_7_MainPage;
+                userType.Activator = Activate_4_ContentTablePage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 8:   //  ExtendedListView.ExtendedListView
+            case 5:   //  Frink.MainPage
+                userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_5_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 6:   //  ExtendedListView.ExtendedListView
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ListView"));
-                userType.Activator = Activate_8_ExtendedListView;
+                userType.Activator = Activate_6_ExtendedListView;
                 userType.AddMemberName("IsPullToRefreshEnabled");
                 userType.AddMemberName("PullToRefreshPartTemplate");
                 userType.AddMemberName("LoadingPartTemplate");
@@ -291,32 +283,50 @@ namespace Frink.Frink_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 9:   //  Windows.UI.Xaml.Controls.ListView
+            case 7:   //  Windows.UI.Xaml.Controls.ListView
                 xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  Windows.UI.Xaml.Controls.ItemsControl
+            case 8:   //  Windows.UI.Xaml.Controls.ItemsControl
                 xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 11:   //  Boolean
+            case 9:   //  Boolean
                 xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  Windows.UI.Xaml.DataTemplate
+            case 10:   //  Windows.UI.Xaml.DataTemplate
                 xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 13:   //  Frink.NavigationListPage
+            case 11:   //  Frink.NavigationListPage
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_13_NavigationListPage;
+                userType.Activator = Activate_11_NavigationListPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 14:   //  Frink.UserControls.ListItemUserControl
+            case 12:   //  Frink.UserControls.ImageLoaderUserControl
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_14_ListItemUserControl;
+                userType.Activator = Activate_12_ImageLoaderUserControl;
+                userType.AddMemberName("ImageSource");
+                userType.AddMemberName("ImageHeight");
+                userType.AddMemberName("ImageWidth");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  String
+                xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 14:   //  Double
+                xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 15:   //  Frink.UserControls.ListItemUserControl
+                userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_15_ListItemUserControl;
                 userType.AddMemberName("Title");
                 userType.AddMemberName("Description");
                 userType.AddMemberName("Source");
@@ -383,85 +393,85 @@ namespace Frink.Frink_XamlTypeInfo
             return foundXamlType;
         }
 
-        private object get_0_ImageLoaderUserControl_ImageSource(object instance)
-        {
-            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
-            return that.ImageSource;
-        }
-        private void set_0_ImageLoaderUserControl_ImageSource(object instance, object Value)
-        {
-            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
-            that.ImageSource = (global::System.String)Value;
-        }
-        private object get_1_ImageLoaderUserControl_ImageHeight(object instance)
-        {
-            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
-            return that.ImageHeight;
-        }
-        private void set_1_ImageLoaderUserControl_ImageHeight(object instance, object Value)
-        {
-            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
-            that.ImageHeight = (global::System.Double)Value;
-        }
-        private object get_2_ImageLoaderUserControl_ImageWidth(object instance)
-        {
-            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
-            return that.ImageWidth;
-        }
-        private void set_2_ImageLoaderUserControl_ImageWidth(object instance, object Value)
-        {
-            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
-            that.ImageWidth = (global::System.Double)Value;
-        }
-        private object get_3_ExtendedListView_IsPullToRefreshEnabled(object instance)
+        private object get_0_ExtendedListView_IsPullToRefreshEnabled(object instance)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             return that.IsPullToRefreshEnabled;
         }
-        private void set_3_ExtendedListView_IsPullToRefreshEnabled(object instance, object Value)
+        private void set_0_ExtendedListView_IsPullToRefreshEnabled(object instance, object Value)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             that.IsPullToRefreshEnabled = (global::System.Boolean)Value;
         }
-        private object get_4_ExtendedListView_PullToRefreshPartTemplate(object instance)
+        private object get_1_ExtendedListView_PullToRefreshPartTemplate(object instance)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             return that.PullToRefreshPartTemplate;
         }
-        private void set_4_ExtendedListView_PullToRefreshPartTemplate(object instance, object Value)
+        private void set_1_ExtendedListView_PullToRefreshPartTemplate(object instance, object Value)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             that.PullToRefreshPartTemplate = (global::Windows.UI.Xaml.DataTemplate)Value;
         }
-        private object get_5_ExtendedListView_LoadingPartTemplate(object instance)
+        private object get_2_ExtendedListView_LoadingPartTemplate(object instance)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             return that.LoadingPartTemplate;
         }
-        private void set_5_ExtendedListView_LoadingPartTemplate(object instance, object Value)
+        private void set_2_ExtendedListView_LoadingPartTemplate(object instance, object Value)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             that.LoadingPartTemplate = (global::Windows.UI.Xaml.DataTemplate)Value;
         }
-        private object get_6_ExtendedListView_IsMoreDataRequestedEnabled(object instance)
+        private object get_3_ExtendedListView_IsMoreDataRequestedEnabled(object instance)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             return that.IsMoreDataRequestedEnabled;
         }
-        private void set_6_ExtendedListView_IsMoreDataRequestedEnabled(object instance, object Value)
+        private void set_3_ExtendedListView_IsMoreDataRequestedEnabled(object instance, object Value)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             that.IsMoreDataRequestedEnabled = (global::System.Boolean)Value;
         }
-        private object get_7_ExtendedListView_MoreDataProgressTemplate(object instance)
+        private object get_4_ExtendedListView_MoreDataProgressTemplate(object instance)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             return that.MoreDataProgressTemplate;
         }
-        private void set_7_ExtendedListView_MoreDataProgressTemplate(object instance, object Value)
+        private void set_4_ExtendedListView_MoreDataProgressTemplate(object instance, object Value)
         {
             var that = (global::ExtendedListView.ExtendedListView)instance;
             that.MoreDataProgressTemplate = (global::Windows.UI.Xaml.DataTemplate)Value;
+        }
+        private object get_5_ImageLoaderUserControl_ImageSource(object instance)
+        {
+            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
+            return that.ImageSource;
+        }
+        private void set_5_ImageLoaderUserControl_ImageSource(object instance, object Value)
+        {
+            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
+            that.ImageSource = (global::System.String)Value;
+        }
+        private object get_6_ImageLoaderUserControl_ImageHeight(object instance)
+        {
+            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
+            return that.ImageHeight;
+        }
+        private void set_6_ImageLoaderUserControl_ImageHeight(object instance, object Value)
+        {
+            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
+            that.ImageHeight = (global::System.Double)Value;
+        }
+        private object get_7_ImageLoaderUserControl_ImageWidth(object instance)
+        {
+            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
+            return that.ImageWidth;
+        }
+        private void set_7_ImageLoaderUserControl_ImageWidth(object instance, object Value)
+        {
+            var that = (global::Frink.UserControls.ImageLoaderUserControl)instance;
+            that.ImageWidth = (global::System.Double)Value;
         }
         private object get_8_ListItemUserControl_Title(object instance)
         {
@@ -501,61 +511,61 @@ namespace Frink.Frink_XamlTypeInfo
 
             switch (longMemberName)
             {
-            case "Frink.UserControls.ImageLoaderUserControl.ImageSource":
-                userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Frink.UserControls.ImageLoaderUserControl");
-                xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "ImageSource", "String");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_0_ImageLoaderUserControl_ImageSource;
-                xamlMember.Setter = set_0_ImageLoaderUserControl_ImageSource;
-                break;
-            case "Frink.UserControls.ImageLoaderUserControl.ImageHeight":
-                userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Frink.UserControls.ImageLoaderUserControl");
-                xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "ImageHeight", "Double");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_1_ImageLoaderUserControl_ImageHeight;
-                xamlMember.Setter = set_1_ImageLoaderUserControl_ImageHeight;
-                break;
-            case "Frink.UserControls.ImageLoaderUserControl.ImageWidth":
-                userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Frink.UserControls.ImageLoaderUserControl");
-                xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "ImageWidth", "Double");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_2_ImageLoaderUserControl_ImageWidth;
-                xamlMember.Setter = set_2_ImageLoaderUserControl_ImageWidth;
-                break;
             case "ExtendedListView.ExtendedListView.IsPullToRefreshEnabled":
                 userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ExtendedListView.ExtendedListView");
                 xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "IsPullToRefreshEnabled", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_3_ExtendedListView_IsPullToRefreshEnabled;
-                xamlMember.Setter = set_3_ExtendedListView_IsPullToRefreshEnabled;
+                xamlMember.Getter = get_0_ExtendedListView_IsPullToRefreshEnabled;
+                xamlMember.Setter = set_0_ExtendedListView_IsPullToRefreshEnabled;
                 break;
             case "ExtendedListView.ExtendedListView.PullToRefreshPartTemplate":
                 userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ExtendedListView.ExtendedListView");
                 xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "PullToRefreshPartTemplate", "Windows.UI.Xaml.DataTemplate");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_4_ExtendedListView_PullToRefreshPartTemplate;
-                xamlMember.Setter = set_4_ExtendedListView_PullToRefreshPartTemplate;
+                xamlMember.Getter = get_1_ExtendedListView_PullToRefreshPartTemplate;
+                xamlMember.Setter = set_1_ExtendedListView_PullToRefreshPartTemplate;
                 break;
             case "ExtendedListView.ExtendedListView.LoadingPartTemplate":
                 userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ExtendedListView.ExtendedListView");
                 xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "LoadingPartTemplate", "Windows.UI.Xaml.DataTemplate");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_5_ExtendedListView_LoadingPartTemplate;
-                xamlMember.Setter = set_5_ExtendedListView_LoadingPartTemplate;
+                xamlMember.Getter = get_2_ExtendedListView_LoadingPartTemplate;
+                xamlMember.Setter = set_2_ExtendedListView_LoadingPartTemplate;
                 break;
             case "ExtendedListView.ExtendedListView.IsMoreDataRequestedEnabled":
                 userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ExtendedListView.ExtendedListView");
                 xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "IsMoreDataRequestedEnabled", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_6_ExtendedListView_IsMoreDataRequestedEnabled;
-                xamlMember.Setter = set_6_ExtendedListView_IsMoreDataRequestedEnabled;
+                xamlMember.Getter = get_3_ExtendedListView_IsMoreDataRequestedEnabled;
+                xamlMember.Setter = set_3_ExtendedListView_IsMoreDataRequestedEnabled;
                 break;
             case "ExtendedListView.ExtendedListView.MoreDataProgressTemplate":
                 userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("ExtendedListView.ExtendedListView");
                 xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "MoreDataProgressTemplate", "Windows.UI.Xaml.DataTemplate");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_7_ExtendedListView_MoreDataProgressTemplate;
-                xamlMember.Setter = set_7_ExtendedListView_MoreDataProgressTemplate;
+                xamlMember.Getter = get_4_ExtendedListView_MoreDataProgressTemplate;
+                xamlMember.Setter = set_4_ExtendedListView_MoreDataProgressTemplate;
+                break;
+            case "Frink.UserControls.ImageLoaderUserControl.ImageSource":
+                userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Frink.UserControls.ImageLoaderUserControl");
+                xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "ImageSource", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_5_ImageLoaderUserControl_ImageSource;
+                xamlMember.Setter = set_5_ImageLoaderUserControl_ImageSource;
+                break;
+            case "Frink.UserControls.ImageLoaderUserControl.ImageHeight":
+                userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Frink.UserControls.ImageLoaderUserControl");
+                xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "ImageHeight", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_6_ImageLoaderUserControl_ImageHeight;
+                xamlMember.Setter = set_6_ImageLoaderUserControl_ImageHeight;
+                break;
+            case "Frink.UserControls.ImageLoaderUserControl.ImageWidth":
+                userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Frink.UserControls.ImageLoaderUserControl");
+                xamlMember = new global::Frink.Frink_XamlTypeInfo.XamlMember(this, "ImageWidth", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_7_ImageLoaderUserControl_ImageWidth;
+                xamlMember.Setter = set_7_ImageLoaderUserControl_ImageWidth;
                 break;
             case "Frink.UserControls.ListItemUserControl.Title":
                 userType = (global::Frink.Frink_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Frink.UserControls.ListItemUserControl");

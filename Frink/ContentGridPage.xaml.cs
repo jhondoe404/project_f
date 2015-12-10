@@ -71,6 +71,7 @@ namespace Frink
             {
                 textBlockDescription.Text = DataHelper.Instance._contentItemModel[0].description;
                 gridViewcontent.ItemsSource = DataHelper.Instance._contentItemModel[0].images;
+                loadImage("http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg");
             }
             else
             {
@@ -83,16 +84,46 @@ namespace Frink
 
         #endregion
         #region EVENT HANDLERS
+        #region IMAGE LOADER
 
 
 
-        async private void ListViewContent_ItemClick(object sender, ItemClickEventArgs e)
+        private void imageHeader_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            LoadingPanel.Visibility = Visibility.Collapsed;
+        }
+
+        private void imageHeader_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            progressRing.Visibility = Visibility.Collapsed;
+            showMessage(textBlockErrorLoading);
+        }
+
+
+
+        #endregion
+        #region LIST VIEW
+
+
+
+        private void ListViewContent_ItemClick(object sender, ItemClickEventArgs e)
         {
 #if DEBUG
             Debug.WriteLine("[ContentGridPage][ItemClicked]");
 #endif
-            MessageDialog message = new MessageDialog("Click event not yet implemented");
-            await message.ShowAsync();
+            if (sender == null)
+                return;
+
+            ImageModel item = (ImageModel)e.ClickedItem;
+            if (item == null)
+                return;
+
+            ContentItemModel newContentItemModel = new ContentItemModel();
+            newContentItemModel.type = ContentItemModel.CONTENT_ITEM_GRID;
+            newContentItemModel.images = new System.Collections.ObjectModel.ObservableCollection<ImageModel>();
+            newContentItemModel.images.Add(item);
+
+            Frame.Navigate(typeof(ContentDetailsPage), newContentItemModel);
         }
 
 
@@ -104,6 +135,60 @@ namespace Frink
 
 
 
-        #endregion  
+        #endregion
+        #endregion
+        #region CUSTOM METHODS
+
+
+
+        /// <summary>
+        ///     Loads image 
+        /// </summary>
+        /// <param name="filepath">path of the image to be loaded</param>
+        private void loadImage(string filepath)
+        {
+            if (filepath != null)
+            {
+                progressRing.Visibility = Visibility.Visible;
+                showMessage(textBlockValidatingConnection);
+                if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+                {
+                    showMessage(textBlockLoadingImage);
+                    imageHeader.Source = Utils.getBitmapImageFromPath(filepath);
+
+                }
+                else
+                {
+                    showMessage(textBlockErrorNoConnection);
+                    progressRing.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                showMessage(textBlockErrorNoData);
+            }
+        }
+
+
+
+        /// <summary>
+        ///     Shows appropriate message and hides the rest
+        /// </summary>
+        /// <param name="textBlock">TextBlock to be shown</param>
+        private void showMessage(TextBlock textBlock)
+        {
+            textBlockErrorNoConnection.Visibility = Visibility.Collapsed;
+            textBlockErrorLoading.Visibility = Visibility.Collapsed;
+            textBlockErrorNoData.Visibility = Visibility.Collapsed;
+            textBlockLoadingImage.Visibility = Visibility.Collapsed;
+            textBlockValidatingConnection.Visibility = Visibility.Collapsed;
+
+            LoadingPanel.Visibility = Visibility.Visible;
+            textBlock.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        }
+
+
+
+        #endregion
     }
 }

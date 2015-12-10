@@ -154,3 +154,8 @@ D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyApp.pri
 D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyAppPCL.pdb
 D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\HockeyAppPCL.xml
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\HockeyApp.pri.xml
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\ContentDetailsPage.xbf
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentDetailsPage.g.i.cs
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentDetailsPage.g.cs
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentDetailsPage.xaml
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\ContentDetailsPage.xbf

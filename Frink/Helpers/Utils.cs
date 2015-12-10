@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Frink.Helpers
 {
@@ -69,6 +70,25 @@ namespace Frink.Helpers
             }            
         }
 
+
+
+        #endregion
+        #region BITMAPS
+
+
+        /// <summary>
+        ///     Gets a bitmap image object from the specified path
+        /// </summary>
+        /// <param name="path">Path of the bitmap image</param>
+        /// <returns>converted file\url</returns>
+        public static BitmapImage getBitmapImageFromPath(String path)
+        {
+            var bmi = new BitmapImage();
+            Uri myUri = new Uri(path, UriKind.Absolute);
+            bmi.CreateOptions = BitmapCreateOptions.None;
+            bmi.UriSource = myUri;
+            return bmi;
+        }
 
 
         #endregion

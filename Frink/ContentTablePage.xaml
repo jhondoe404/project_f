@@ -16,10 +16,23 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <userControls:ImageLoaderUserControl
-            Grid.Row="0"
-            x:Name="imageHeader"
-            ImageSource="http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg"/>
+        <StackPanel Grid.Row="0">
+            <Image
+                VerticalAlignment="Top"
+                x:Name="imageHeader" 
+                ImageOpened="imageHeader_ImageOpened" 
+                ImageFailed="imageHeader_ImageFailed"                
+                Stretch="UniformToFill"/>
+
+            <StackPanel x:Name="LoadingPanel" VerticalAlignment="Top">
+                <ProgressRing x:Name="progressRing" IsEnabled="True" />
+                <TextBlock x:Name="textBlockLoadingImage" x:Uid="textLoadingImage" HorizontalAlignment="Center" />
+                <TextBlock x:Name="textBlockValidatingConnection" x:Uid="textValidatingInternetConnection" HorizontalAlignment="Center" />
+                <TextBlock x:Name="textBlockErrorLoading" x:Uid="errorLoadingImage" HorizontalAlignment="Center" />
+                <TextBlock x:Name="textBlockErrorNoConnection" x:Uid="errorNoInternetConnection" HorizontalAlignment="Center" />
+                <TextBlock x:Name="textBlockErrorNoData" x:Uid="errorNoData" HorizontalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
 
         <ListView
             Grid.Row="1"

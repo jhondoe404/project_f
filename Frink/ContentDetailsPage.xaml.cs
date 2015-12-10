@@ -1,19 +1,21 @@
-﻿using Frink.Delegates;
-using Frink.Helpers;
+﻿using Frink.Helpers;
 using Frink.Models;
-using Frink.Rest;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Background;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Resources;
-using Windows.Phone.UI.Input;
-using Windows.UI;
-using Windows.UI.Popups;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
@@ -23,13 +25,13 @@ namespace Frink
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NavigationListPage : Page
+    public sealed partial class ContentDetailsPage : Page
     {
         #region CLASS CONSTRUCT
 
 
 
-        public NavigationListPage()
+        public ContentDetailsPage()
         {
             this.InitializeComponent();
         }
@@ -46,23 +48,41 @@ namespace Frink
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)       
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+#if DEBUG
+            Debug.WriteLine("[ContentDetailsPage][OnNavigatedTo]");
+#endif
             if (e == null)
                 return;
 
-            if (DataHelper.Instance._themeModel != null)
-            {                
-                ListViewNavigationMain.ItemsSource = DataHelper.Instance._themeModel.menu.items;
-                loadImage(DataHelper.Instance._themeModel.menu.image);             
+            ContentItemModel item = e.Parameter as ContentItemModel;
+            if (item == null)
+                return;
+
+#if DEBUG
+            Debug.WriteLine("[ContentTablePage][OnNavigatedTo] {0}", item.author);
+#endif                
+            if (item.type == ContentItemModel.CONTENT_ITEM_TABLE)
+            {
+                loadImage(item.picture);
+                assertTextBlock(textBlockSubtitle, item.title);
+                assertTextBlock(textBlockDate, item.createdAt);
+                assertTextBlock(textBlockContent, item.text);
             }
-        } 
+            else if (item.type == ContentItemModel.CONTENT_ITEM_GRID)
+            {
+                loadImage(item.images[0].picture);
+                assertTextBlock(textBlockSubtitle, item.images[0].title);
+                textBlockDate.Visibility = Visibility.Collapsed;
+                assertTextBlock(textBlockContent, item.images[0].caption);
+            }            
+        }
 
 
 
         #endregion
         #region EVENT HANDLERS
-        #region IMAGE LOADER
 
 
 
@@ -79,68 +99,6 @@ namespace Frink
 
 
 
-        #endregion
-        #region SCROLL VIEWVER
-
-
-
-        private async Task ListViewNavigationMain_PullToRefreshRequested(object sender, EventArgs e)
-        {
-#if DEBUG
-            Debug.WriteLine("[NavigationListPage][ListViewNavigationMain_PullToRefreshRequested] Refreshing the content");
-#endif
-            await Task.Delay(1000);
-
-            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-            {
-                await RestService.getMenu();
-                if (DataHelper.Instance._themeModel == null)
-                {
-                    MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorLoadingData"));
-                    await message.ShowAsync();
-                }
-            }
-            else
-            {
-                MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoInternetConnection"));
-                await message.ShowAsync();
-            }
-        }
-
-
-        async private void ListViewNavigationMain_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            MenuItemModel item = (MenuItemModel)e.ClickedItem;
-            if (item == null || sender == null)
-                return;
-
-            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-            {
-                MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoInternetConnection"));
-                await message.ShowAsync();
-                return;
-            }
-#if DEBUG
-            Debug.WriteLine("[NavigationListPage][Itemclick] {0}", item.name);
-#endif
-            if (item.type.Equals(ConstantsHelper.NAVIGATION_TYPE_TABLE))
-            {
-                Frame.Navigate(typeof(ContentTablePage), item);
-            }
-            else if (item.type.Equals(ConstantsHelper.NAVIGATION_TYPE_GRID))
-            {
-                Frame.Navigate(typeof(ContentGridPage), item);
-            }
-            else
-            {
-                MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNavigationNotSupported"));
-                await message.ShowAsync();
-            }
-        }
-
-
-
-        #endregion
         #endregion
         #region CUSTOM METHODS
 
@@ -166,12 +124,12 @@ namespace Frink
                 {
                     showMessage(textBlockErrorNoConnection);
                     progressRing.Visibility = Visibility.Collapsed;
-                }
+                }                
             }
             else
             {
                 showMessage(textBlockErrorNoData);
-            }
+            }            
         }
 
 
@@ -194,6 +152,27 @@ namespace Frink
 
 
 
-        #endregion
+        /// <summary>
+        ///     If there's any text to be set, set it, 
+        ///     otherwise use localised string for no Data
+        /// </summary>
+        /// <param name="textBlock">TextBlock to hold the text</param>
+        /// <param name="text">text to be set</param>
+        private void assertTextBlock(TextBlock textBlock, string text)
+        {
+            if (text != null)
+            {
+                textBlock.Text = text;
+            }
+            else
+            {
+                textBlock.Text = new ResourceLoader().GetString("errorNoData");
+            }
+
+        }
+
+
+
+        #endregion        
     }
 }

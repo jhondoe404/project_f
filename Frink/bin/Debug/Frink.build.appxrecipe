@@ -64,6 +64,9 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\ContentDetailsPage.xbf">
+      <PackagePath>ContentDetailsPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\ContentGridPage.xbf">
       <PackagePath>ContentGridPage.xbf</PackagePath>
     </AppxPackagedFile>

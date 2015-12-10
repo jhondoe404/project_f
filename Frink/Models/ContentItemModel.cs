@@ -13,22 +13,30 @@ namespace Frink.Models
 
 
 
-        public string   title { get; set; }
-        public string   description { get; set; }
-        public string   id { get; set; }
-        public string   createdAt { get; set; }
-        public string   updatedAt { get; set; }
-        public int      total { get; set; }
+        public const int CONTENT_ITEM_TABLE = 0;
+        public const int CONTENT_ITEM_GRID = 1;
+        public const int CONTENT_ITEM_LOCATION = 2;
+
+        public string                           title { get; set; }
+        public string                           description { get; set; }
+        public string                           id { get; set; }
+        public string                           createdAt { get; set; }
+        public string                           updatedAt { get; set; }
+        public int                              total { get; set; }
         public ObservableCollection<ImageModel> images { get; set; }
-        public string   text { get; set; }
-        public string   author { get; set; }
-        public string   picture { get; set; }
+        public string                           text { get; set; }
+        public string                           author { get; set; }
+        public string                           picture { get; set; }
+        public int                              type { get; set; }
+
 
 
         #endregion
         #region CLASS CONSTRUCT
 
 
+
+        public ContentItemModel() { }
 
         public ContentItemModel(string title, string descrption, string id, string createdAt, string updatedAt, int total, ObservableCollection<ImageModel> images)
         {
