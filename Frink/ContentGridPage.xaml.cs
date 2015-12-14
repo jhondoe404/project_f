@@ -25,6 +25,15 @@ namespace Frink
 
 
 
+        ResourceLoader rl;
+
+
+
+        #endregion
+        #region CLASS PARAMETERS
+
+
+
         string source;
 
 
@@ -58,7 +67,10 @@ namespace Frink
 #endif
             if (e == null)
                 return;
-          
+
+            if (rl == null)
+                rl = new ResourceLoader();
+
             MenuItemModel item = e.Parameter as MenuItemModel;            
 #if DEBUG
             Debug.WriteLine("[ContentGridPage][OnNavigatedTo] {0}", item.type);
@@ -82,7 +94,7 @@ namespace Frink
         private void imageHeader_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
             progressRing.Visibility = Visibility.Collapsed;
-            showMessage(textBlockErrorLoading);
+            showMessage(rl.GetString("errorLoadingImage"));
         }
 
 
@@ -163,40 +175,42 @@ namespace Frink
             if (filepath != null)
             {
                 progressRing.Visibility = Visibility.Visible;
-                showMessage(textBlockValidatingConnection);
+                showMessage(rl.GetString("textValidatingInternetConnection"));
                 if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
                 {
-                    showMessage(textBlockLoadingImage);
+                    showMessage(rl.GetString("textLoadingImage"));
                     imageHeader.Source = Utils.getBitmapImageFromPath(filepath);
+
                 }
                 else
                 {
-                    showMessage(textBlockErrorNoConnection);
+                    showMessage(rl.GetString("errorNoInternetConnection"));
                     progressRing.Visibility = Visibility.Collapsed;
                 }
             }
             else
             {
-                showMessage(textBlockErrorNoData);
+                progressRing.Visibility = Visibility.Collapsed;
+                showMessage(rl.GetString("errorNoData"));
             }
         }
 
 
 
         /// <summary>
-        ///     Shows appropriate message and hides the rest
+        ///     Shows appropriate message
         /// </summary>
-        /// <param name="textBlock">TextBlock to be shown</param>
-        private void showMessage(TextBlock textBlock)
+        /// <param name="message">Message to be displayed</param>
+        private void showMessage(string message)
         {
-            textBlockErrorNoConnection.Visibility = Visibility.Collapsed;
-            textBlockErrorLoading.Visibility = Visibility.Collapsed;
-            textBlockErrorNoData.Visibility = Visibility.Collapsed;
-            textBlockLoadingImage.Visibility = Visibility.Collapsed;
-            textBlockValidatingConnection.Visibility = Visibility.Collapsed;
+            if (LoadingPanel.Visibility != Visibility.Visible)
+                LoadingPanel.Visibility = Visibility.Visible;
 
-            LoadingPanel.Visibility = Visibility.Visible;
-            textBlock.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            if (textBlockMessage.Visibility != Visibility.Visible)
+                textBlockMessage.Visibility = Visibility.Visible;
+
+            if (message != null)
+                textBlockMessage.Text = message;
         }
 
 

@@ -28,11 +28,7 @@
 
             <StackPanel x:Name="LoadingPanel" VerticalAlignment="Top">
                 <ProgressRing x:Name="progressRing" IsEnabled="True" />
-                <TextBlock x:Name="textBlockLoadingImage" x:Uid="textLoadingImage" HorizontalAlignment="Center" />
-                <TextBlock x:Name="textBlockValidatingConnection" x:Uid="textValidatingInternetConnection" HorizontalAlignment="Center" />
-                <TextBlock x:Name="textBlockErrorLoading" x:Uid="errorLoadingImage" HorizontalAlignment="Center" />
-                <TextBlock x:Name="textBlockErrorNoConnection" x:Uid="errorNoInternetConnection" HorizontalAlignment="Center" />
-                <TextBlock x:Name="textBlockErrorNoData" x:Uid="errorNoData" HorizontalAlignment="Center" />
+                <TextBlock x:Name="textBlockMessage" x:Uid="textLoadingImage" HorizontalAlignment="Center" />                
             </StackPanel>
         </StackPanel>
 
