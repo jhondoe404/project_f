@@ -21,6 +21,15 @@ namespace Frink
     /// </summary>
     public sealed partial class ContentGridPage : Page
     {
+        #region CLASS PARAMETERS
+
+
+
+        string source;
+
+
+
+        #endregion
         #region CLASS CONSTRUCT
 
 
@@ -42,7 +51,7 @@ namespace Frink
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        async protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
 #if DEBUG
             Debug.WriteLine("[ContentGridPage][OnNavigatedTo]");
@@ -54,18 +63,7 @@ namespace Frink
 #if DEBUG
             Debug.WriteLine("[ContentGridPage][OnNavigatedTo] {0}", item.type);
 #endif
-            await RestService.getEntry(item.source);
-            if (DataHelper.Instance._contentItemModel != null && DataHelper.Instance._contentItemModel.Count > 0)
-            {
-                textBlockDescription.Text = DataHelper.Instance._contentItemModel[0].description;
-                gridViewcontent.ItemsSource = DataHelper.Instance._contentItemModel[0].images;
-                loadImage("http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg");
-            }
-            else
-            {
-                MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoData"));
-                await message.ShowAsync();
-            }
+            source = item.source;            
         }
 
 
@@ -90,7 +88,33 @@ namespace Frink
 
 
         #endregion
-        #region LIST VIEW
+        #region GRID VIEW
+
+
+
+        async private void gridViewcontent_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadImage("http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg");
+            if (gridViewcontent.ItemsSource == null)
+            {
+                if (DataHelper.Instance._contentItemModel == null || !source.Equals(DataHelper.Instance._source))
+                {
+                    DataHelper.Instance._source = source;
+                    await RestService.getEntry(source);
+                }
+
+                if (DataHelper.Instance._contentItemModel != null && DataHelper.Instance._contentItemModel.Count > 0)
+                {
+                    textBlockDescription.Text = DataHelper.Instance._contentItemModel[0].description;
+                    gridViewcontent.ItemsSource = DataHelper.Instance._contentItemModel[0].images;
+                }
+                else
+                {
+                    MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoData"));
+                    await message.ShowAsync();
+                }
+            }
+        }
 
 
 
@@ -115,10 +139,11 @@ namespace Frink
         }
 
 
-        private void gridViewcontent_SizeChanged(object sender, SizeChangedEventArgs e)
+
+        private void WrapGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            var panel = (WrapGrid)gridViewcontent.ItemsPanelRoot;
-            panel.ItemWidth = panel.ItemHeight = root.ActualWidth / 4;
+            var wg = sender as WrapGrid;
+            wg.ItemWidth = wg.ItemHeight = (int)gridViewcontent.ActualWidth / 3;
         }
 
 
@@ -143,7 +168,6 @@ namespace Frink
                 {
                     showMessage(textBlockLoadingImage);
                     imageHeader.Source = Utils.getBitmapImageFromPath(filepath);
-
                 }
                 else
                 {

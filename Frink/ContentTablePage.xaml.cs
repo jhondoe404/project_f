@@ -4,6 +4,7 @@ using Frink.Models;
 using Frink.Rest;
 using System;
 using System.Diagnostics;
+using Windows.ApplicationModel.Resources;
 using Windows.Phone.UI.Input;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -19,6 +20,15 @@ namespace Frink
     /// </summary>
     public sealed partial class ContentTablePage : Page
     {
+        #region CLASS PARAMETERS
+
+
+
+        string source;
+
+
+
+        #endregion
         #region CLASS CONSTRUCT
 
 
@@ -40,7 +50,7 @@ namespace Frink
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        async protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
 #if DEBUG
             Debug.WriteLine("[ContentTablePage][OnNavigatedTo]");
@@ -49,14 +59,10 @@ namespace Frink
                 return;
             
             MenuItemModel item = e.Parameter as MenuItemModel;
-            //var bs = Frame.BackStack.Where(b => b.SourcePageType.Name == "NavigationListPage").FirstOrDefault();
-            //Frame.BackStack.Add(bs);
 #if DEBUG
             Debug.WriteLine("[ContentTablePage][OnNavigatedTo] {0}", item.type);
-#endif            
-            await RestService.getEntry(item.source);
-            ListViewContent.ItemsSource = DataHelper.Instance._contentItemModel;
-            loadImage("http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg");
+#endif      
+            source = item.source;
         }
 
 
@@ -82,6 +88,30 @@ namespace Frink
 
         #endregion
         #region LIST VIEW
+
+
+        async private void ListViewContent_Loaded(object sender, RoutedEventArgs e)
+        {
+            loadImage("http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg");
+            if (ListViewContent.ItemsSource == null)
+            {
+                if (DataHelper.Instance._contentItemModel == null || !source.Equals(DataHelper.Instance._source))
+                {
+                    DataHelper.Instance._source = source;
+                    await RestService.getEntry(source);
+                }
+
+                if (DataHelper.Instance._contentItemModel != null && DataHelper.Instance._contentItemModel.Count > 0)
+                {
+                    ListViewContent.ItemsSource = DataHelper.Instance._contentItemModel;
+                }
+                else
+                {
+                    MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoData"));
+                    await message.ShowAsync();
+                }            
+            }            
+        }
 
 
 

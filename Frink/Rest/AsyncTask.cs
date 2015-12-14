@@ -247,7 +247,7 @@ namespace Frink.Rest
         {
             Debug.WriteLine("[AsyncTask][getFromWeb] executing http request {0}", _url);
 
-            HttpClient request = new HttpClient();
+            HttpClient request = new HttpClient();            
             Uri connectionUri = new Uri(_url);
 
             HttpFormUrlEncodedContent formContent = null;

@@ -40,6 +40,7 @@
             IsPullToRefreshEnabled="True"
                                                                                   
                                                         
+                                                  
             IsItemClickEnabled="True">
   
             <extendedListView:ExtendedListView.ItemTemplate>
@@ -106,7 +107,8 @@
                 <DataTemplate>
                     <StackPanel 
                         Orientation="Horizontal"
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Center"
+                        x:Name="animatedItem">
                         <ProgressRing 
                             IsActive="True" 
                             VerticalAlignment="Center"

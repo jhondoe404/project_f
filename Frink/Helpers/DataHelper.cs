@@ -34,6 +34,7 @@ namespace Frink.Helpers
         private static readonly DataHelper              _instance = new DataHelper();
         public ThemeModel                               _themeModel { get; set; }
         public ObservableCollection<ContentItemModel>   _contentItemModel { get; set; }
+        public string                                   _source { get; set; }
 
 
 

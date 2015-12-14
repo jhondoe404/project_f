@@ -50,12 +50,6 @@ namespace Frink
         {
             if (e == null)
                 return;
-
-            if (DataHelper.Instance._themeModel != null)
-            {                
-                ListViewNavigationMain.ItemsSource = DataHelper.Instance._themeModel.menu.items;
-                loadImage(DataHelper.Instance._themeModel.menu.image);             
-            }
         } 
 
 
@@ -81,6 +75,20 @@ namespace Frink
 
         #endregion
         #region SCROLL VIEWVER
+
+
+
+        private void ListViewNavigationMain_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataHelper.Instance._themeModel != null)
+            {
+                loadImage(DataHelper.Instance._themeModel.menu.image);
+                if (ListViewNavigationMain.ItemsSource == null)
+                {
+                    ListViewNavigationMain.ItemsSource = DataHelper.Instance._themeModel.menu.items;
+                }            
+            }
+        }
 
 
 

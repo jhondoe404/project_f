@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <Image x:ConnectionId='2'
+            <Image x:ConnectionId='3'
                 VerticalAlignment="Top"
                 x:Name="imageHeader" 
                                                       
@@ -52,7 +52,7 @@
             x:Name="gridViewcontent"
             IsItemClickEnabled="True"
                                                  
-                                                     
+                                           
             DataContext="{Binding}"
             Margin="0">
             <GridView.ItemTemplate>
@@ -64,25 +64,28 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
 
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapGrid 
-                        MaximumRowsOrColumns="3" 
-                        Orientation="Horizontal" 
-                        HorizontalChildrenAlignment="Stretch" 
-                        VerticalChildrenAlignment="Stretch" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-                    <Setter Property="VerticalAlignment" Value="Stretch"/>
-                    <Setter Property="Margin" Value="0 0 0 0"/>
+                    <Setter Property="HorizontalContentAlignment"
+                    Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment"
+                    Value="Stretch" />
                 </Style>
             </GridView.ItemContainerStyle>
+
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid x:ConnectionId='2' 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Orientation="Horizontal"
+                        MaximumRowsOrColumns="3"
+                        HorizontalChildrenAlignment="Stretch"
+                        VerticalChildrenAlignment="Stretch"
+                        Margin="0"
+                                                />
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
         </GridView>
     </Grid>
 </Page>

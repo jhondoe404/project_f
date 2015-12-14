@@ -39,6 +39,7 @@
             x:Name="ListViewContent"
             IsItemClickEnabled="True"
                                                  
+                                           
             DataContext="{Binding}">
             <ListView.ItemTemplate>
                 <DataTemplate>
