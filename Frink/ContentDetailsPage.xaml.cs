@@ -31,6 +31,7 @@ namespace Frink
 
 
 
+        private double originalHeight;
         ResourceLoader rl;
 
 
@@ -73,7 +74,7 @@ namespace Frink
                 rl = new ResourceLoader();
 #if DEBUG
             Debug.WriteLine("[ContentTablePage][OnNavigatedTo] {0}", item.author);
-#endif                
+#endif
             if (item.type == ContentItemModel.CONTENT_ITEM_TABLE)
             {
                 loadImage(item.picture);
@@ -87,7 +88,7 @@ namespace Frink
                 assertTextBlock(textBlockSubtitle, item.images[0].title);
                 textBlockDate.Visibility = Visibility.Collapsed;
                 assertTextBlock(textBlockContent, item.images[0].caption);
-            }            
+            }
         }
 
 
@@ -100,6 +101,7 @@ namespace Frink
         private void imageHeader_ImageOpened(object sender, RoutedEventArgs e)
         {
             LoadingPanel.Visibility = Visibility.Collapsed;
+            originalHeight = imageHeader.ActualHeight;
         }
 
         private void imageHeader_ImageFailed(object sender, ExceptionRoutedEventArgs e)
@@ -135,13 +137,13 @@ namespace Frink
                 {
                     showMessage(rl.GetString("errorNoInternetConnection"));
                     progressRing.Visibility = Visibility.Collapsed;
-                }                
+                }
             }
             else
             {
                 progressRing.Visibility = Visibility.Collapsed;
                 showMessage(rl.GetString("errorNoData"));
-            }            
+            }
         }
 
 
@@ -174,17 +176,28 @@ namespace Frink
         {
             if (text != null)
             {
-                textBlock.Text = text;
+                textBlock.Text = Windows.Data.Html.HtmlUtilities.ConvertToText(text);
             }
             else
             {
-                textBlock.Text = new ResourceLoader().GetString("errorNoData");
+                textBlock.Text = rl.GetString("errorNoData");
             }
 
         }
 
 
 
-        #endregion        
+        #endregion
+
+        private void Scroll_ViewChanging(object sender, ScrollViewerViewChangingEventArgs e)
+        {
+            var verticalOffset = ScrollViewerContent.VerticalOffset;
+            double newHeight = originalHeight - verticalOffset;
+
+#if DEBUG
+            Debug.WriteLine("[ContentDetailsPage][Scroll_ViewChanging] Vertical Offset: {0}, newHeight: {1}",
+                verticalOffset, newHeight);
+#endif
+        }
     }
 }
