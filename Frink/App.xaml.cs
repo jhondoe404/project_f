@@ -1,17 +1,21 @@
-﻿using HockeyApp;
+﻿using Frink.Delegates;
 using Frink.Helpers;
 using Frink.Models;
+using HockeyApp;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Background;
+using Windows.Phone.UI.Input;
 using Windows.Storage;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-using Windows.Phone.UI.Input;
-using Frink.Delegates;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -22,7 +26,33 @@ namespace Frink
     /// </summary>
     public sealed partial class App : Application
     {
+        #region CLASS PARAMETERS
+
+
+
+        IBackgroundTaskRegistration taskRegistration;
+
+        /// <summary>
+        ///     Returns if there are any registered tasks.
+        /// </summary>
+        public bool TaskIsRegistered
+        {
+            get
+            {
+                IReadOnlyDictionary<Guid, IBackgroundTaskRegistration> allTasks = BackgroundTaskRegistration.AllTasks;
+                return (allTasks.Count > 0);
+            }
+        }
+
         private TransitionCollection transitions;
+        private string eTagTheme;
+
+
+
+        #endregion
+        #region CLASS CONSTRUCT
+
+
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -36,6 +66,11 @@ namespace Frink
             HardwareButtons.BackPressed += NavigationDelegate.HardwareButtons_BackPressed;
             HockeyClient.Current.Configure("2c07ec5ac57e4d4f88cb1699614005bf");
         }
+
+
+
+        #endregion
+        #region APP LIFECYCLE METHODS
 
 
 
@@ -128,6 +163,7 @@ namespace Frink
             
             // Ensure the current window is active
             Window.Current.Activate();
+            Window.Current.VisibilityChanged += Current_VisibilityChanged;
             await HockeyClient.Current.SendCrashesAsync();
 #if WINDOWS_PHONE_APP
             await HockeyClient.Current.CheckForAppUpdateAsync();
@@ -156,9 +192,154 @@ namespace Frink
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-
-            // TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+
+        /// <summary>
+        /// Invoked when application execution is being resumed.  Application state is restored
+        /// without knowing whether the application will be terminated or resumed with the contents
+        /// of memory still intact.
+        /// </summary>
+        /// <param name="sender">The source of the resumed request.</param>
+        /// <param name="e">Details about the resume request.</param>
+        private void OnResuming(object sender, object e)
+        {
+            if (this.TaskIsRegistered)
+            {
+                this.GetTask();
+            }
+            else
+            {
+                RegisterTask(ConstantsHelper.BACKGROUND_TASK_RESTFUL_API);
+            }
+        }
+
+
+        /// <summary>
+        /// Inovked when the application visibility has changed. This is used because the 
+        /// onResuming and on Suspending event handlers aren't firing properly.
+        /// </summary>
+        /// <param name="sender">The source of the event invoker.</param>
+        /// <param name="e">Details about the visibility state.</param>
+        private void Current_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+        {
+            if (e.Visible)
+            {
+                if (this.TaskIsRegistered)
+                {
+                    this.GetTask();
+                }
+                else
+                {
+                    RegisterTask(ConstantsHelper.BACKGROUND_TASK_RESTFUL_API);
+                }
+            }
+            else
+            {
+                this.UnregisterTask();
+            }
+        }
+
+
+
+        #endregion
+        #region BACKGROUND TASKS
+
+
+
+        /// <summary>
+        ///     Adds a task to the background queue with appropriate System Trigger.
+        /// </summary>
+        /// <param name="name">Name of the background task in the queue</param>
+        public void RegisterTask(string name)
+        {
+            BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder();
+            taskBuilder.Name = name;
+            SystemTrigger trigger = new SystemTrigger(SystemTriggerType.InternetAvailable, false);
+            taskBuilder.SetTrigger(trigger);
+            taskBuilder.TaskEntryPoint = typeof(BackgroundRest.RestfulAPI).FullName;
+            taskBuilder.Register();
+            this.GetTask();
+        }
+
+
+        /// <summary>
+        ///     Removes the task from the registered queue.
+        /// </summary>
+        public void UnregisterTask()
+        {
+            this.taskRegistration.Completed -= OnCompleted;
+            this.taskRegistration.Progress -= OnProgress;
+            this.taskRegistration.Unregister(false);
+            this.taskRegistration = null;
+        }
+
+
+        /// <summary>
+        ///     Gets the first registered task and assigns event handlers to it.
+        /// </summary>
+        public void GetTask()
+        {
+            this.taskRegistration = BackgroundTaskRegistration.AllTasks.Values.First();
+            this.taskRegistration.Completed += OnCompleted;
+            this.taskRegistration.Progress += OnProgress;
+        }
+
+        /// <summary>
+        ///     Event handler that fires off every time a background task does something
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        async private void OnProgress(BackgroundTaskRegistration sender, BackgroundTaskProgressEventArgs args)
+        {
+            Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                async () =>
+                {
+#if DEBUG
+                    Debug.WriteLine("[BackgroundDelegate][OnProgress] {0}", args.Progress);
+#endif
+                    if (args.Progress == 7)
+                    {
+                        bool fileExists = await FileHelper.ValidateFile(ApplicationData.Current.TemporaryFolder, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
+                        if (fileExists)
+                        {
+                            string[] local = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME, ApplicationData.Current.TemporaryFolder);
+                            if (local.Length > 1 && local[1] != null && this.eTagTheme != local[1])
+                            {
+                                this.eTagTheme = local[1];
+                                DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(local[0]);
+                            }
+                        }
+                        else
+                        {
+#if DEBUG
+                            Debug.WriteLine("[Application][OnProgress] File doesn't exist");
+#endif
+                        }
+                    }
+
+                });
+        }
+
+
+        /// <summary>
+        ///     Fires off when the background task is finished with the task.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        async private void OnCompleted(BackgroundTaskRegistration sender, BackgroundTaskCompletedEventArgs args)
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                () =>
+                {
+                    // TODO: end task logic
+                    Debug.WriteLine("[Application][OnCompleted]");
+                });
+        }
+
+
+
+        #endregion
     }
 }

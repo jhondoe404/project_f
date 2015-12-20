@@ -31,7 +31,7 @@ namespace Frink.Rest
             string etag = null;
             if (fileExists)
             {
-                String[] fromfile = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
+                String[] fromfile = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME, ApplicationData.Current.TemporaryFolder);
                 if (fromfile.Length > 1)
                 {
                     asynctask.setETag(fromfile[1]);
@@ -47,7 +47,8 @@ namespace Frink.Rest
             if (response != null && !isEtags(asynctask._header[ConstantsHelper.API_ETAG], etag))
             {
                 String responseFormatted = System.Text.Encoding.UTF8.GetString(response, 0, response.Length);
-                await FileHelper.writeHttpToFile(responseFormatted, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME, asynctask._header[ConstantsHelper.API_ETAG]);
+                await FileHelper.writeHttpToFile(responseFormatted, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME, 
+                    asynctask._header[ConstantsHelper.API_ETAG], ApplicationData.Current.TemporaryFolder);
                 DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(responseFormatted);
             }
             else
@@ -92,7 +93,7 @@ namespace Frink.Rest
             string etag = null;
             if (fileExists)
             {
-                String[] fromfile = await FileHelper.readHttpFromFile(fileName);
+                String[] fromfile = await FileHelper.readHttpFromFile(fileName, ApplicationData.Current.TemporaryFolder);
                 if (fromfile.Length > 1)
                 {
                     asynctask.setETag(fromfile[1]);
@@ -108,7 +109,8 @@ namespace Frink.Rest
             if (response != null && !isEtags(asynctask._header[ConstantsHelper.API_ETAG], etag))
             {
                 String responseFormatted = System.Text.Encoding.UTF8.GetString(response, 0, response.Length);
-                await FileHelper.writeHttpToFile(responseFormatted, fileName, asynctask._header[ConstantsHelper.API_ETAG]);
+                await FileHelper.writeHttpToFile(responseFormatted, fileName, 
+                    asynctask._header[ConstantsHelper.API_ETAG], ApplicationData.Current.TemporaryFolder);
                 DataHelper.Instance._contentItemModel = await JSONHelper.ParseDataObservableCollection<ContentItemModel>(responseFormatted);
             }
             else

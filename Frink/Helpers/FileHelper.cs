@@ -155,12 +155,14 @@ namespace Frink.Helpers
         /// <param name="body">body of the http request to store</param>
         /// <param name="file">file to which the http request will be written to</param>
         /// <param name="etag">etag of the http request for the validation</param>
+        /// <param name="folder">Folder to write the file to. If it's left null, it will use local storage folder.</param>
         /// <returns></returns>
-        async public static Task writeHttpToFile(string body, string file, string etag = null)
+        async public static Task writeHttpToFile(string body, string file, string etag = null, StorageFolder folder = null)
         {
+            folder = folder ?? ApplicationData.Current.LocalFolder;
             string bodyToSave = body + ConstantsHelper.API_ETAG_CACHE_DELIMITER + etag;
             var encrypted = EncryptHelper.AES_Encrypt(bodyToSave, ConstantsHelper.LOCALE_PASSWORD);
-            await WriteToFile(encrypted, file);
+            await WriteToFile(encrypted, file, folder);
         }
 
 
@@ -168,10 +170,12 @@ namespace Frink.Helpers
         ///     Reads http response and etag, if any, from a file
         /// </summary>
         /// <param name="file">file to read from</param>
+        /// <param name="folder">Folder to write the file to. If it's left null, it will use local storage folder.</param>
         /// <returns>array of decrypted data from the file. if there's any, 0 index is the body, 1 index is the etag</returns>
-        async public static Task<String[]> readHttpFromFile(string file)
+        async public static Task<String[]> readHttpFromFile(string file, StorageFolder folder = null)
         {
-            String readfile = await FileHelper.ReadFromFile(file);
+            folder = folder ?? ApplicationData.Current.LocalFolder;
+            String readfile = await FileHelper.ReadFromFile(file, folder);
             readfile = EncryptHelper.AES_Decrypt(readfile, ConstantsHelper.LOCALE_PASSWORD);
 
             String[] separators = new String[1];

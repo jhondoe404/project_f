@@ -25,14 +25,14 @@ namespace Frink.Helpers
 
 
 
-        public const String API_APP_ID = "1";
-        public const String API_HOST_URL= "http://frink-dev.smartfactory.ch:1337/api";
+        public const string API_APP_ID = "1";
+        public const string API_HOST_URL = "http://frink-dev.smartfactory.ch:1337/api";
 
-        public const String API_ETAG = "ETag";
-        public const String API_ETAG_CACHE_DELIMITER = " =#=! ";
+        public const string API_ETAG = "ETag";
+        public const string API_ETAG_CACHE_DELIMITER = " =#=! ";
 
-        public const String API_METHOD_MENU =  "/app";
-        public const String API_METHOD_LIST = "/entries";
+        public const string API_METHOD_MENU = "/app";
+        public const string API_METHOD_LIST = "/entries";
 
 
 
@@ -41,10 +41,11 @@ namespace Frink.Helpers
 
 
 
-        public const String LOCALE_PASSWORD = "thisisanawasomecoolpassword";
-        public const String LOCALE_KEY_APPLICATION_THEME = "applicationtheme";
+        public const string LOCALE_PASSWORD = "thisisanawasomecoolpassword";
+        public const string LOCALE_KEY_APPLICATION_THEME = "applicationtheme";
 
-        public const String LOCAL_FILE_APPLICATION_THEME = "apptheme.txt";
+        public const string LOCAL_FILE_APPLICATION_THEME = "apptheme.txt";
+        public const string BACKGROUND_TASK_RESTFUL_API = "background_task_restful_api_get_theme";
 
 
 
@@ -53,9 +54,9 @@ namespace Frink.Helpers
 
 
 
-        public const String NAVIGATION_TYPE_GRID = "CollectionView";
-        public const String NAVIGATION_TYPE_TABLE = "TableView";
-        public const String NAVIGATION_TYPE_LOCATION = "LocationView";
+        public const string NAVIGATION_TYPE_GRID = "CollectionView";
+        public const string NAVIGATION_TYPE_TABLE = "TableView";
+        public const string NAVIGATION_TYPE_LOCATION = "LocationView";
 
 
 
