@@ -18,18 +18,20 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <Image
-                VerticalAlignment="Top"
-                x:Name="imageHeader" 
-                ImageOpened="imageHeader_ImageOpened" 
-                ImageFailed="imageHeader_ImageFailed"                
-                Stretch="UniformToFill"/>
+        <Image
+            Grid.Row="0"
+            VerticalAlignment="Top"
+            x:Name="imageHeader" 
+            ImageOpened="imageHeader_ImageOpened" 
+            ImageFailed="imageHeader_ImageFailed"                
+            Stretch="UniformToFill"/>
 
-            <StackPanel x:Name="LoadingPanel" VerticalAlignment="Top">
-                <ProgressRing x:Name="progressRing" IsEnabled="True" />
-                <TextBlock x:Name="textBlockMessage" x:Uid="textLoadingImage" HorizontalAlignment="Center" />                
-            </StackPanel>
+        <StackPanel 
+            x:Name="LoadingPanel" 
+            VerticalAlignment="Top"
+            Grid.Row="0">
+            <ProgressRing x:Name="progressRing" IsEnabled="True" />
+            <TextBlock x:Name="textBlockMessage" x:Uid="textLoadingImage" HorizontalAlignment="Center" />
         </StackPanel>
 
         <TextBlock

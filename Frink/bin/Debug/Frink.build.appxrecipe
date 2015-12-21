@@ -61,6 +61,42 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\fontawesome-webfont.ttf">
       <PackagePath>Assets\Fonts\fontawesome-webfont.ttf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\Lato-Regular.ttf">
+      <PackagePath>Assets\Fonts\Lato-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\Average-Regular.ttf">
+      <PackagePath>Assets\Fonts\Average-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\OpenSans-Regular.ttf">
+      <PackagePath>Assets\Fonts\OpenSans-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\DroidSans-Regular.ttf">
+      <PackagePath>Assets\Fonts\DroidSans-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\Cantarell-Regular.ttf">
+      <PackagePath>Assets\Fonts\Cantarell-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\Cardo-Regular.ttf">
+      <PackagePath>Assets\Fonts\Cardo-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\Merriweather-Regular.ttf">
+      <PackagePath>Assets\Fonts\Merriweather-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\JosefinSans-Regular.ttf">
+      <PackagePath>Assets\Fonts\JosefinSans-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\Dosis-Regular.ttf">
+      <PackagePath>Assets\Fonts\Dosis-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\FjallaOne-Regular.ttf">
+      <PackagePath>Assets\Fonts\FjallaOne-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\Cabin-Regular.ttf">
+      <PackagePath>Assets\Fonts\Cabin-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Fonts\BreeSerif-Regular.ttf">
+      <PackagePath>Assets\Fonts\BreeSerif-Regular.ttf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>

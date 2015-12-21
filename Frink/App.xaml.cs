@@ -309,6 +309,7 @@ namespace Frink
                             {
                                 this.eTagTheme = local[1];
                                 DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(local[0]);
+                                ThemeDelegate.refreshTheme();
                             }
                         }
                         else

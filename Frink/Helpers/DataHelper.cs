@@ -35,6 +35,8 @@ namespace Frink.Helpers
         public ThemeModel                               _themeModel { get; set; }
         public ObservableCollection<ContentItemModel>   _contentItemModel { get; set; }
         public string                                   _source { get; set; }
+        public FontFamily                               _body { get; set; }
+        public FontFamily                               _head { get; set; }
 
 
 

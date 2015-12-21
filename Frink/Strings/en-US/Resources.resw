@@ -154,4 +154,10 @@
   <data name="textValidatingInternetConnection" xml:space="preserve">
     <value>Validating connection to the internet</value>
   </data>
+  <data name="textVersion" xml:space="preserve">
+    <value>Ver.</value>
+  </data>
+  <data name="TextVersionBuild" xml:space="preserve">
+    <value>Build</value>
+  </data>
 </root>

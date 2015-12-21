@@ -89,6 +89,12 @@ namespace Frink
                 textBlockDate.Visibility = Visibility.Collapsed;
                 assertTextBlock(textBlockContent, item.images[0].caption);
             }
+
+            if (textBlockSubtitle.FontFamily == null || textBlockSubtitle.FontFamily != DataHelper.Instance._body)
+            {
+                textBlockSubtitle.FontFamily = DataHelper.Instance._body;
+                textBlockContent.FontFamily = DataHelper.Instance._body;
+            }
         }
 
 

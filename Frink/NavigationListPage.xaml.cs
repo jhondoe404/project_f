@@ -5,6 +5,7 @@ using Frink.Rest;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.ApplicationModel.Background;
 using Windows.ApplicationModel.Resources;
 using Windows.Phone.UI.Input;
@@ -95,10 +96,18 @@ namespace Frink
             if (DataHelper.Instance._themeModel != null)
             {
                 loadImage(DataHelper.Instance._themeModel.menu.image);
+                if (ListViewNavigationMain.FontFamily == null || ListViewNavigationMain.FontFamily != DataHelper.Instance._body)
+                {
+                    ListViewNavigationMain.FontFamily = DataHelper.Instance._body;
+                }
                 if (ListViewNavigationMain.ItemsSource == null)
                 {
                     ListViewNavigationMain.ItemsSource = DataHelper.Instance._themeModel.menu.items;
-                }            
+                }
+
+                textBlockAppBuild.FontFamily = DataHelper.Instance._head;
+                textBlockAppBuild.Text = rl.GetString("textVersion") + ": " + Package.Current.Id.Version.Major + ", "
+                    + rl.GetString("TextVersionBuild") + ": " + Package.Current.Id.Version.Build;
             }
         }
 
@@ -118,6 +127,11 @@ namespace Frink
                 {
                     MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorLoadingData"));
                     await message.ShowAsync();
+                }
+
+                if (ListViewNavigationMain.FontFamily == null || ListViewNavigationMain.FontFamily != DataHelper.Instance._body)
+                {
+                    ListViewNavigationMain.FontFamily = DataHelper.Instance._body;
                 }
             }
             else

@@ -196,6 +196,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Fonts\Lato-Regular.ttf" />
+    <Content Include="Assets\Fonts\Average-Regular.ttf" />
+    <Content Include="Assets\Fonts\OpenSans-Regular.ttf" />
+    <Content Include="Assets\Fonts\DroidSans-Regular.ttf" />
+    <Content Include="Assets\Fonts\Cantarell-Regular.ttf" />
+    <Content Include="Assets\Fonts\Cardo-Regular.ttf" />
+    <Content Include="Assets\Fonts\Merriweather-Regular.ttf" />
+    <Content Include="Assets\Fonts\JosefinSans-Regular.ttf" />
+    <Content Include="Assets\Fonts\Dosis-Regular.ttf" />
+    <Content Include="Assets\Fonts\FjallaOne-Regular.ttf" />
+    <Content Include="Assets\Fonts\Cabin-Regular.ttf" />
+    <Content Include="Assets\Fonts\BreeSerif-Regular.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

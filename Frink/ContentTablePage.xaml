@@ -16,18 +16,39 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <Image
-                VerticalAlignment="Top"
-                x:Name="imageHeader" 
-                ImageOpened="imageHeader_ImageOpened" 
-                ImageFailed="imageHeader_ImageFailed"                
-                Stretch="UniformToFill"/>
+        <Image
+            Grid.Row="0"
+            VerticalAlignment="Top"
+            x:Name="imageHeader" 
+            ImageOpened="imageHeader_ImageOpened" 
+            ImageFailed="imageHeader_ImageFailed"                
+            Stretch="UniformToFill"/>
 
-            <StackPanel x:Name="LoadingPanel" VerticalAlignment="Top">
-                <ProgressRing x:Name="progressRing" IsEnabled="True" />
-                <TextBlock x:Name="textBlockMessage" x:Uid="textLoadingImage" HorizontalAlignment="Center" />
-            </StackPanel>
+        <StackPanel 
+            x:Name="LoadingPanel" 
+            VerticalAlignment="Top"
+            Grid.Row="0">
+            <ProgressRing x:Name="progressRing" IsEnabled="True" />
+            <TextBlock x:Name="textBlockMessage" x:Uid="textLoadingImage" HorizontalAlignment="Center" />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="0"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left">
+
+            <TextBlock 
+                x:Name="contentTitle" 
+                Foreground="White"
+                FontSize="18"
+                TextWrapping="WrapWholeWords"
+                Margin="10"/>
+
+            <TextBlock 
+                x:Name="contentDate"
+                Foreground="{StaticResource Color1}"
+                FontSize="14"
+                Margin="10"/>
         </StackPanel>
 
         <ListView

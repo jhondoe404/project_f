@@ -36,6 +36,7 @@ namespace Frink.Delegates
         {
             refreshThemeNavigationIcons();
             refreshThemeColours();
+            refreshFonts();
         }
 
 
@@ -85,5 +86,83 @@ namespace Frink.Delegates
                 
             }            
         }        
+
+
+        /// <summary>
+        ///     Sets the singletone instances to the appropriate fonts 
+        ///     passed by the theme http request
+        /// </summary>
+        public static void refreshFonts()
+        {
+            if (DataHelper.Instance._themeModel != null
+                && DataHelper.Instance._themeModel.app != null
+                && DataHelper.Instance._themeModel.app.titleFont != null
+                && !DataHelper.Instance._themeModel.app.titleFont.Equals(""))
+            {
+                DataHelper.Instance._head = getFontFamily(DataHelper.Instance._themeModel.app.titleFont);
+            }
+
+            if (DataHelper.Instance._themeModel != null
+                    && DataHelper.Instance._themeModel.app != null
+                    && DataHelper.Instance._themeModel.app.bodyFont != null
+                    && !DataHelper.Instance._themeModel.app.bodyFont.Equals(""))
+            {
+                DataHelper.Instance._body = getFontFamily(DataHelper.Instance._themeModel.app.bodyFont);
+            }
+        }
+
+
+        /// <summary>
+        ///     Returns appropriate path based on the supplied font name
+        /// </summary>
+        /// <param name="fontName">Name of the font</param>
+        /// <returns>Instanced object based on the supplied font name</returns>
+        private static FontFamily getFontFamily(string fontName)
+        {
+            string fontNameCleared = fontName.Replace(" ", "");
+            string route = "Assets/Fonts/" + fontNameCleared + "-Regular.ttf#";
+            switch (fontNameCleared)
+            {
+                case "BreeSerif":
+                    route += "Bree Serif";
+                    break;
+                case "Cabin":
+                    route += "Cabin";
+                    break;
+                case "Cantarell":
+                    route += "Cantarell";
+                    break;
+                case "Cardo":
+                    route += "Cardo";
+                    break;
+                case "Dosis":
+                    route += "Dosis";
+                    break;
+                case "DroidSans":
+                    route += "Droid Sans";
+                    break;
+                case "FjallaOne":
+                    route += "Fjalla One";
+                    break;
+                case "JosefinSans":
+                    route += "Josefin Sans";
+                    break;
+                case "Lato":
+                    route += "Lato";
+                    break;
+                case "Merriweather":
+                    route += "Merriweather";
+                    break;
+                case "OpenSans":
+                    route += "Open Sans";
+                    break;
+                case "Average":
+                default:
+                    route += "Average";
+                    break;
+            }
+
+            return new FontFamily(route);
+        }
     }
 }

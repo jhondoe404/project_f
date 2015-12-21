@@ -96,6 +96,10 @@ namespace Frink
         async private void ListViewContent_Loaded(object sender, RoutedEventArgs e)
         {
             loadImage("http://i585.photobucket.com/albums/ss296/pusangnegro/cutechicks.jpg");
+            if (ListViewContent.FontFamily == null || ListViewContent.FontFamily != DataHelper.Instance._body)
+            {
+                ListViewContent.FontFamily = DataHelper.Instance._body;
+            }
             if (ListViewContent.ItemsSource == null)
             {
                 if (DataHelper.Instance._contentItemModel == null || !source.Equals(DataHelper.Instance._source))
@@ -113,7 +117,13 @@ namespace Frink
                     MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoData"));
                     await message.ShowAsync();
                 }            
-            }            
+            }
+
+            DateTime thisDay = DateTime.Today;
+
+            contentTitle.Visibility = Visibility.Collapsed;
+            contentDate.FontFamily = DataHelper.Instance._body;
+            contentDate.Text = thisDay.ToString("MMMM dd, yyyy");
         }
 
 
