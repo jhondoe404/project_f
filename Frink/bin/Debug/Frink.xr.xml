@@ -43,8 +43,8 @@
       <RootProperty Name="Text" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="CacheMode" />
       <RootProperty Name="FontFamily" />
+      <RootProperty Name="FlowDirection" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.Tools.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
@@ -157,7 +157,6 @@
       <RootProperty Name="IsPullToRefreshEnabled" />
       <RootProperty Name="IsItemClickEnabled" />
       <RootProperty Name="ItemTemplate" />
-      <RootProperty Name="ItemContainerStyle" />
       <RootProperty Name="PullToRefreshPartTemplate" />
       <RootProperty Name="LoadingPartTemplate" />
       <RootEvent Name="PullToRefreshRequested" />

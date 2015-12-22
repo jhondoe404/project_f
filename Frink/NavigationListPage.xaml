@@ -56,30 +56,38 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            x:Name="textBlockIcon"
+                            FontSize="30"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Margin="10"
+                            Text="{Binding icon}"                                
+                            FontFamily="{StaticResource FontAwesome}"
+                            Foreground="{StaticResource Color1}" 
+                            FlowDirection="RightToLeft"/>
 
-                        <StackPanel
-                                HorizontalAlignment="Center"
-                                Orientation="Horizontal">
-                            <TextBlock
-                                x:Name="textBlockIcon"
-                                FontSize="16"
-                                VerticalAlignment="Center"
-                                Margin="10" 
-                                CacheMode="BitmapCache"
-                                Text="{Binding icon}"                                
-                                FontFamily="{StaticResource FontAwesome}"
-                                Foreground="{StaticResource Color1}"/>
-
-                            <TextBlock
-                                Foreground="Black"
-                                FontSize="16"
-                                x:Name="textBlockTitle"
-                                VerticalAlignment="Center"
-                                Text="{Binding name}"
-                                Margin="10" />
-                        </StackPanel>
-
-                        <Line            
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Foreground="Black"
+                            FontSize="30"                            
+                            x:Name="textBlockTitle"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Text="{Binding name}"
+                            Margin="10" />
+                
+                        <Line
+                            Grid.ColumnSpan="2"
                             x:Name="Separator"
                             Grid.Row="1" 
                             X2="1"
@@ -91,17 +99,12 @@
                     </Grid>
                 </DataTemplate>
             </extendedListView:ExtendedListView.ItemTemplate>
-            <extendedListView:ExtendedListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
-                </Style>
-            </extendedListView:ExtendedListView.ItemContainerStyle>
 
             <extendedListView:ExtendedListView.PullToRefreshPartTemplate>
                 <DataTemplate>
                     <TextBlock
                         Margin="25,0" 
-                        FontSize="20" 
+                        FontSize="40" 
                         VerticalAlignment="Center" 
                         HorizontalAlignment="Center"
                         Foreground="Black"
@@ -122,7 +125,7 @@
                         <TextBlock 
                             x:Uid="textRefreshingProgress"                            
                             Margin="25,0" 
-                            FontSize="20" 
+                            FontSize="40" 
                             VerticalAlignment="Center" 
                             Foreground="Black"/>
                     </StackPanel>

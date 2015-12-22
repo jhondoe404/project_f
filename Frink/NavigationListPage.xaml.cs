@@ -118,8 +118,6 @@ namespace Frink
 #if DEBUG
             Debug.WriteLine("[NavigationListPage][ListViewNavigationMain_PullToRefreshRequested] Refreshing the content");
 #endif
-            await Task.Delay(1000);
-
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
                 await RestService.getMenu();
