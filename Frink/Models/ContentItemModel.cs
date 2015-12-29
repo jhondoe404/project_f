@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Frink.Models
 {
-    class ContentItemModel
+    public class ContentItemModel
     {
         #region CLASS PARAMETERS
 

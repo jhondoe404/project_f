@@ -160,4 +160,7 @@
   <data name="TextVersionBuild" xml:space="preserve">
     <value>Build</value>
   </data>
+  <data name="titleApplication.Text" xml:space="preserve">
+    <value>Frink</value>
+  </data>
 </root>

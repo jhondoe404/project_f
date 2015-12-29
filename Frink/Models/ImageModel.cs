@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Frink.Models
 {
-    class ImageModel
+    public class ImageModel
     {
         #region CLASS PARAMETERS
 

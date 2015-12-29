@@ -1,7 +1,8 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="d:\projekti\windowsphone\project_f\frink\obj\debug\intermediatexaml\frink.exe" HashGuid="d0ba476f-72b2-561d-415d-391eb5004890" />
+    <LocalAssembly PathName="d:\projekti\windowsphone\project_f\frink\obj\debug\intermediatexaml\frink.exe" HashGuid="4662cf58-2295-5ad5-45a8-f97745600055" />
     <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\backgroundrest\bin\debug\backgroundrest.winmd" HashGuid="a419dac9-aa21-c28f-9a24-92929cbe9e36" />
+    <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\packages\drawerlayout.1.0.4\lib\drawerlayout.dll" HashGuid="b0d3b3f8-90b7-6a66-b416-66f64dcf26fa" />
     <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\packages\extendedlistview.0.0.5.5\lib\portable-win81+wpa81\extendedlistview.dll" HashGuid="1c154780-82cc-a952-5c90-1a1e95480b35" />
     <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\packages\hockeysdk.winrt.2.2.2\lib\portable-wpa81\hockeyapp.dll" HashGuid="f144586c-df32-ee67-0c04-ea49345b8822" />
     <ReferenceAssembly PathName="d:\projekti\windowsphone\project_f\packages\hockeysdk.core.2.2.2\lib\portable-net45+win8+wp8+wpa81+win81\hockeyapppcl.dll" HashGuid="3d102cd6-aa5d-697c-6ea3-0f707532e8e7" />

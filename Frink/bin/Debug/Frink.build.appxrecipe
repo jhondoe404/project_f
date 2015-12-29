@@ -22,6 +22,9 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\BackgroundRest\bin\Debug\BackgroundRest.winmd">
       <PackagePath>BackgroundRest.winmd</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\DrawerLayout.1.0.4\lib\DrawerLayout.dll">
+      <PackagePath>DrawerLayout.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\ExtendedListview.0.0.5.5\lib\portable-win81+wpa81\ExtendedListView.dll">
       <PackagePath>ExtendedListView.dll</PackagePath>
     </AppxPackagedFile>
@@ -33,6 +36,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\ic_drawer.png">
+      <PackagePath>Assets\ic_drawer.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
@@ -112,8 +118,20 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\NavigationDrawerPage.xbf">
+      <PackagePath>NavigationDrawerPage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\NavigationListPage.xbf">
       <PackagePath>NavigationListPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ContentDetailsUserControl.xbf">
+      <PackagePath>UserControls\ContentDetailsUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ContentGridUserControl.xbf">
+      <PackagePath>UserControls\ContentGridUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ContentTableUserControl.xbf">
+      <PackagePath>UserControls\ContentTableUserControl.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ImageLoaderUserControl.xbf">
       <PackagePath>UserControls\ImageLoaderUserControl.xbf</PackagePath>

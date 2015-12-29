@@ -63,6 +63,8 @@ namespace Frink
 
             if (rl == null)
                 rl = new ResourceLoader();
+
+            Frame.BackStack.Clear();
         } 
 
 

@@ -26,14 +26,6 @@ namespace Frink
 
 
         ResourceLoader rl;
-
-
-
-        #endregion
-        #region CLASS PARAMETERS
-
-
-
         string source;
 
 

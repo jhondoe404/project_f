@@ -26,6 +26,7 @@ namespace Frink
 
         string source;
         ResourceLoader rl;
+        private System.Collections.ObjectModel.ObservableCollection<ContentItemModel> observableCollection;
 
 
 

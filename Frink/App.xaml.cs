@@ -128,7 +128,7 @@ namespace Frink
 #if DEBUG
                 Debug.WriteLine("[App.xaml.cs] loading file ");
 #endif
-                if (await FileHelper.ValidateFile(ApplicationData.Current.LocalFolder, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME) == false)
+                if (await FileHelper.ValidateFile(ApplicationData.Current.TemporaryFolder, ConstantsHelper.LOCAL_FILE_APPLICATION_THEME) == false)
                 {
 #if DEBUG
                     Debug.WriteLine("[App.xaml.cs] file is null");
@@ -147,14 +147,15 @@ namespace Frink
 #if DEBUG
                         Debug.WriteLine("[App.xaml.cs] file is NOT null ");
 #endif
-                        String[] apptheme = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME);
+                        String[] apptheme = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME, ApplicationData.Current.TemporaryFolder);
                         DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(apptheme[0]);
                         ThemeDelegate.refreshTheme();
 
                         // When the navigation stack isn't restored navigate to the first page,
                         // configuring the new page by passing required information as a navigation
                         // parameter
-                        if (!rootFrame.Navigate(typeof(NavigationListPage), e.Arguments))
+                    // TODO: determine type of page to navigate to. CHANGE THIS CRAP!!!!
+                        if (!rootFrame.Navigate(typeof(NavigationDrawerPage), e.Arguments))
                         {
                             throw new Exception("Failed to create initial navigation page");
                         }
@@ -269,10 +270,13 @@ namespace Frink
         /// </summary>
         public void UnregisterTask()
         {
-            this.taskRegistration.Completed -= OnCompleted;
-            this.taskRegistration.Progress -= OnProgress;
-            this.taskRegistration.Unregister(false);
-            this.taskRegistration = null;
+            if (taskRegistration != null)
+            {
+                this.taskRegistration.Completed -= OnCompleted;
+                this.taskRegistration.Progress -= OnProgress;
+                this.taskRegistration.Unregister(false);
+                this.taskRegistration = null;
+            }            
         }
 
 

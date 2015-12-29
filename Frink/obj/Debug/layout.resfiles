@@ -11,6 +11,7 @@ Assets\Fonts\JosefinSans-Regular.ttf
 Assets\Fonts\Lato-Regular.ttf
 Assets\Fonts\Merriweather-Regular.ttf
 Assets\Fonts\OpenSans-Regular.ttf
+Assets\ic_drawer.png
 Assets\Logo.scale-240.png
 Assets\SmallLogo.scale-240.png
 Assets\SplashScreen.scale-240.png
@@ -23,6 +24,10 @@ ContentGridPage.xbf
 ContentTablePage.xbf
 Frink.xr.xml
 MainPage.xbf
+NavigationDrawerPage.xbf
 NavigationListPage.xbf
+UserControls\ContentDetailsUserControl.xbf
+UserControls\ContentGridUserControl.xbf
+UserControls\ContentTableUserControl.xbf
 UserControls\ImageLoaderUserControl.xbf
 UserControls\ListItemUserControl.xbf
