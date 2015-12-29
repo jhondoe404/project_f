@@ -57,6 +57,7 @@ namespace Frink.Helpers
         public const string NAVIGATION_TYPE_GRID = "CollectionView";
         public const string NAVIGATION_TYPE_TABLE = "TableView";
         public const string NAVIGATION_TYPE_LOCATION = "LocationView";
+        public const string NAVIGATION_TYPE_HOME = "home";
 
 
 

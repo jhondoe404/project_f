@@ -28,6 +28,8 @@ namespace Frink
 
 
         private NavigationDelegate _NavigationDelegate;
+        ResourceLoader _rl;
+        private int index = 0;
 
 
 
@@ -42,11 +44,13 @@ namespace Frink
 
             DrawerLayout.InitializeDrawerLayout();
             _NavigationDelegate = new NavigationDelegate(DrawerLayout);
+            if (_rl == null)
+                _rl = new ResourceLoader();
         }
 
 
 
-        #endregion
+        #endregion        
         #region LIFECYCLE METHODS
 
 
@@ -101,11 +105,29 @@ namespace Frink
             if (ListMenuItems.SelectedItem != null)
             {
                 DrawerLayout.CloseDrawer();
+             
+                // Validate index
+                if (ListMenuItems.SelectedIndex.Equals(index))
+                {
+                    ListMenuItems.SelectedItem = null;
+                    return;
+                }
+
+                index = ListMenuItems.SelectedIndex;
+
+                // Validate home
+                MenuItemModel item = (MenuItemModel)ListMenuItems.SelectedItem;
+                if (item.name.Equals(_rl.GetString("titleHome")))
+                {
+                    _NavigationDelegate.ClearBackstack();
+                    this._NavigationDelegate.AddItem(new DrawerHomeUserControl());
+                    return;
+                }
 
                 // Validate connectivity
                 if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
                 {
-                    MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoInternetConnection"));
+                    MessageDialog message = new MessageDialog(_rl.GetString("errorNoInternetConnection"));
                     await message.ShowAsync();
                     return;
                 }
@@ -113,8 +135,7 @@ namespace Frink
                 // Get data
                 var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
                 await statusBar.ProgressIndicator.ShowAsync();
-
-                MenuItemModel item = (MenuItemModel)ListMenuItems.SelectedItem;
+                
                 if (DataHelper.Instance._contentItemModel == null || !item.source.Equals(DataHelper.Instance._source))
                 {
                     DataHelper.Instance._source = item.source;
@@ -126,7 +147,7 @@ namespace Frink
                 // Validate data and load apropriate control
                 if (!(DataHelper.Instance._contentItemModel != null && DataHelper.Instance._contentItemModel.Count > 0))
                 {
-                    MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoData"));
+                    MessageDialog message = new MessageDialog(_rl.GetString("errorNoData"));
                     await message.ShowAsync();                    
                 }
                 else
@@ -146,7 +167,7 @@ namespace Frink
                             break;
 
                         default:
-                            MessageDialog messageNotSupported = new MessageDialog(new ResourceLoader().GetString("errorNavigationNotSupported"));
+                            MessageDialog messageNotSupported = new MessageDialog(_rl.GetString("errorNavigationNotSupported"));
                             await messageNotSupported.ShowAsync();
                             break;
                     }    
@@ -177,9 +198,18 @@ namespace Frink
                 {
                     ListMenuItems.FontFamily = DataHelper.Instance._body;
                 }
+
                 if (ListMenuItems.ItemsSource == null)
                 {
+                    if (!DataHelper.Instance._themeModel.menu.items[0].name.Equals(_rl.GetString("titleHome")))
+                    {
+                        MenuItemModel item = new MenuItemModel(_rl.GetString("titleHome"), null, null, null, null, null, null, null);
+                        DataHelper.Instance._themeModel.menu.items.Insert(0, item);
+                    }
+
                     ListMenuItems.ItemsSource = DataHelper.Instance._themeModel.menu.items;
+                    this._NavigationDelegate.AddItem(new DrawerHomeUserControl());
+                    index = 0;
                 }
             }
         }
@@ -195,7 +225,7 @@ namespace Frink
                 await RestService.getMenu();
                 if (DataHelper.Instance._themeModel == null)
                 {
-                    MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorLoadingData"));
+                    MessageDialog message = new MessageDialog(_rl.GetString("errorLoadingData"));
                     await message.ShowAsync();
                 }
 
@@ -206,7 +236,7 @@ namespace Frink
             }
             else
             {
-                MessageDialog message = new MessageDialog(new ResourceLoader().GetString("errorNoInternetConnection"));
+                MessageDialog message = new MessageDialog(_rl.GetString("errorNoInternetConnection"));
                 await message.ShowAsync();
             }
         }

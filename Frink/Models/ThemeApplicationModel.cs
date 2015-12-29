@@ -13,13 +13,13 @@ namespace Frink.Models
 
 
         public ColorScheme  colorScheme { get; set; }
-        public String       name { get; set; }
-        public String       description { get; set; }
+        public string       name { get; set; }
+        public string       description { get; set; }
         public int          id { get; set; }
-        public String       createdAt { get; set; }
-        public String       updatedAt { get; set; }
-        public String       titleFont { get; set; }
-        public String       bodyFont { get; set; }   
+        public string       createdAt { get; set; }
+        public string       updatedAt { get; set; }
+        public string       titleFont { get; set; }
+        public string       bodyFont { get; set; }   
 
 
 
@@ -31,7 +31,7 @@ namespace Frink.Models
         public ThemeApplicationModel ()  { }
 
 
-        public ThemeApplicationModel (ColorScheme _colorScheme, String _name, String _description, int _id, String _createdAt, String _updatedAt, String _titleFont, String _bodyFont)
+        public ThemeApplicationModel (ColorScheme _colorScheme, string _name, string _description, int _id, string _createdAt, string _updatedAt, string _titleFont, string _bodyFont)
         {
             this.colorScheme =  _colorScheme;
             this.name =         _name;

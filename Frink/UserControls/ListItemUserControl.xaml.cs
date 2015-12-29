@@ -124,7 +124,7 @@ namespace Frink.UserControls
                 return;
 
             BitmapImage bmi = new BitmapImage();
-            String url = (string)e.NewValue + "?dim720";
+            string url = (string)e.NewValue + "?dim720";
 #if DEBUG
             Debug.WriteLine("[ListItemUserControl][UpdateSource] URL of the image {0}", url);
 #endif

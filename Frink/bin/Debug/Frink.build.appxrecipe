@@ -133,6 +133,9 @@
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ContentTableUserControl.xbf">
       <PackagePath>UserControls\ContentTableUserControl.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\DrawerHomeUserControl.xbf">
+      <PackagePath>UserControls\DrawerHomeUserControl.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ImageLoaderUserControl.xbf">
       <PackagePath>UserControls\ImageLoaderUserControl.xbf</PackagePath>
     </AppxPackagedFile>

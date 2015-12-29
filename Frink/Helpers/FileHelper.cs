@@ -172,15 +172,15 @@ namespace Frink.Helpers
         /// <param name="file">file to read from</param>
         /// <param name="folder">Folder to write the file to. If it's left null, it will use local storage folder.</param>
         /// <returns>array of decrypted data from the file. if there's any, 0 index is the body, 1 index is the etag</returns>
-        async public static Task<String[]> readHttpFromFile(string file, StorageFolder folder = null)
+        async public static Task<string[]> readHttpFromFile(string file, StorageFolder folder = null)
         {
             folder = folder ?? ApplicationData.Current.LocalFolder;
-            String readfile = await FileHelper.ReadFromFile(file, folder);
+            string readfile = await FileHelper.ReadFromFile(file, folder);
             readfile = EncryptHelper.AES_Decrypt(readfile, ConstantsHelper.LOCALE_PASSWORD);
 
-            String[] separators = new String[1];
+            string[] separators = new string[1];
             separators[0] = ConstantsHelper.API_ETAG_CACHE_DELIMITER;
-            String[] readfilesplit = readfile.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] readfilesplit = readfile.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
 #if DEBUG
             Debug.WriteLine("[FileHelper][ReadHtpFromFile] split: " + readfilesplit[0]);

@@ -29,5 +29,6 @@ NavigationListPage.xbf
 UserControls\ContentDetailsUserControl.xbf
 UserControls\ContentGridUserControl.xbf
 UserControls\ContentTableUserControl.xbf
+UserControls\DrawerHomeUserControl.xbf
 UserControls\ImageLoaderUserControl.xbf
 UserControls\ListItemUserControl.xbf

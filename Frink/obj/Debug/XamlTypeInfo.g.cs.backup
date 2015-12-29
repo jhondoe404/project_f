@@ -148,7 +148,7 @@ namespace Frink.Frink_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[23];
+            _typeNameTable = new string[24];
             _typeNameTable[0] = "Frink.ContentDetailsPage";
             _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
@@ -168,12 +168,13 @@ namespace Frink.Frink_XamlTypeInfo
             _typeNameTable[16] = "Frink.UserControls.ContentDetailsUserControl";
             _typeNameTable[17] = "Frink.UserControls.ContentGridUserControl";
             _typeNameTable[18] = "Frink.UserControls.ContentTableUserControl";
-            _typeNameTable[19] = "Frink.UserControls.ImageLoaderUserControl";
-            _typeNameTable[20] = "String";
-            _typeNameTable[21] = "Double";
-            _typeNameTable[22] = "Frink.UserControls.ListItemUserControl";
+            _typeNameTable[19] = "Frink.UserControls.DrawerHomeUserControl";
+            _typeNameTable[20] = "Frink.UserControls.ImageLoaderUserControl";
+            _typeNameTable[21] = "String";
+            _typeNameTable[22] = "Double";
+            _typeNameTable[23] = "Frink.UserControls.ListItemUserControl";
 
-            _typeTable = new global::System.Type[23];
+            _typeTable = new global::System.Type[24];
             _typeTable[0] = typeof(global::Frink.ContentDetailsPage);
             _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
@@ -193,10 +194,11 @@ namespace Frink.Frink_XamlTypeInfo
             _typeTable[16] = typeof(global::Frink.UserControls.ContentDetailsUserControl);
             _typeTable[17] = typeof(global::Frink.UserControls.ContentGridUserControl);
             _typeTable[18] = typeof(global::Frink.UserControls.ContentTableUserControl);
-            _typeTable[19] = typeof(global::Frink.UserControls.ImageLoaderUserControl);
-            _typeTable[20] = typeof(global::System.String);
-            _typeTable[21] = typeof(global::System.Double);
-            _typeTable[22] = typeof(global::Frink.UserControls.ListItemUserControl);
+            _typeTable[19] = typeof(global::Frink.UserControls.DrawerHomeUserControl);
+            _typeTable[20] = typeof(global::Frink.UserControls.ImageLoaderUserControl);
+            _typeTable[21] = typeof(global::System.String);
+            _typeTable[22] = typeof(global::System.Double);
+            _typeTable[23] = typeof(global::Frink.UserControls.ListItemUserControl);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -242,8 +244,9 @@ namespace Frink.Frink_XamlTypeInfo
         private object Activate_16_ContentDetailsUserControl() { return new global::Frink.UserControls.ContentDetailsUserControl(); }
         private object Activate_17_ContentGridUserControl() { return new global::Frink.UserControls.ContentGridUserControl(); }
         private object Activate_18_ContentTableUserControl() { return new global::Frink.UserControls.ContentTableUserControl(); }
-        private object Activate_19_ImageLoaderUserControl() { return new global::Frink.UserControls.ImageLoaderUserControl(); }
-        private object Activate_22_ListItemUserControl() { return new global::Frink.UserControls.ListItemUserControl(); }
+        private object Activate_19_DrawerHomeUserControl() { return new global::Frink.UserControls.DrawerHomeUserControl(); }
+        private object Activate_20_ImageLoaderUserControl() { return new global::Frink.UserControls.ImageLoaderUserControl(); }
+        private object Activate_23_ListItemUserControl() { return new global::Frink.UserControls.ListItemUserControl(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -368,9 +371,16 @@ namespace Frink.Frink_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 19:   //  Frink.UserControls.ImageLoaderUserControl
+            case 19:   //  Frink.UserControls.DrawerHomeUserControl
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_19_ImageLoaderUserControl;
+                userType.Activator = Activate_19_DrawerHomeUserControl;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 20:   //  Frink.UserControls.ImageLoaderUserControl
+                userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
+                userType.Activator = Activate_20_ImageLoaderUserControl;
                 userType.AddMemberName("ImageSource");
                 userType.AddMemberName("ImageHeight");
                 userType.AddMemberName("ImageWidth");
@@ -378,17 +388,17 @@ namespace Frink.Frink_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 20:   //  String
+            case 21:   //  String
                 xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 21:   //  Double
+            case 22:   //  Double
                 xamlType = new global::Frink.Frink_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 22:   //  Frink.UserControls.ListItemUserControl
+            case 23:   //  Frink.UserControls.ListItemUserControl
                 userType = new global::Frink.Frink_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_22_ListItemUserControl;
+                userType.Activator = Activate_23_ListItemUserControl;
                 userType.AddMemberName("Title");
                 userType.AddMemberName("Description");
                 userType.AddMemberName("Source");

@@ -129,9 +129,9 @@ namespace Frink.Rest
         /// <summary>
         ///     Sets the etag, if any to be used for the server validation 
         /// </summary>
-        /// <param name="etag">String value to be used for the server validation</param>
+        /// <param name="etag">string value to be used for the server validation</param>
         /// <returns></returns>
-        public AsyncTask setETag(String etag)
+        public AsyncTask setETag(string etag)
         {
             if (etag != null)
                 _etag = etag;

@@ -163,4 +163,11 @@
   <data name="titleApplication.Text" xml:space="preserve">
     <value>Frink</value>
   </data>
+  <data name="loremIpsum.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dignissim nibh vel nisl suscipit, non aliquet felis molestie. Proin viverra vitae odio nec venenatis. Vestibulum ultricies sagittis pretium. Integer viverra purus sed mauris tristique tincidunt. Nullam eget mattis elit, nec tempus quam. Donec tincidunt vel quam eget consectetur. Proin nunc risus, volutpat ac mollis at, varius blandit tellus. Nullam convallis lorem turpis, quis venenatis mauris elementum ut. In ligula arcu, facilisis eu aliquet et, condimentum sit amet nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent sodales sit amet nunc varius hendrerit.</value>
+    <comment>Placeholder text</comment>
+  </data>
+  <data name="titleHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
 </root>

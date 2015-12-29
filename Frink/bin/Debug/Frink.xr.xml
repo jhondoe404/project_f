@@ -181,6 +181,7 @@
     <RootType FullName="Frink.UserControls.ContentDetailsUserControl" />
     <RootType FullName="Frink.UserControls.ContentGridUserControl" />
     <RootType FullName="Frink.UserControls.ContentTableUserControl" />
+    <RootType FullName="Frink.UserControls.DrawerHomeUserControl" />
     <RootType FullName="Frink.UserControls.ImageLoaderUserControl" />
     <RootType FullName="Frink.UserControls.ListItemUserControl" />
   </Roots.RootTypes>

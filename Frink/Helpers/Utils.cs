@@ -81,7 +81,7 @@ namespace Frink.Helpers
         /// </summary>
         /// <param name="path">Path of the bitmap image</param>
         /// <returns>converted file\url</returns>
-        public static BitmapImage getBitmapImageFromPath(String path)
+        public static BitmapImage getBitmapImageFromPath(string path)
         {
             var bmi = new BitmapImage();
             Uri myUri = new Uri(path, UriKind.Absolute);

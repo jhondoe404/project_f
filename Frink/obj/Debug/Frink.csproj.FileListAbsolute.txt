@@ -180,3 +180,8 @@ D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ContentGridUserC
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ContentGridUserControl.xaml
 D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\ContentGridUserControl.xbf
 D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\ContentGridUserControl.xbf
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\DrawerHomeUserControl.g.i.cs
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\DrawerHomeUserControl.g.cs
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\DrawerHomeUserControl.xaml
+D:\Projekti\WindowsPhone\project_f\Frink\obj\Debug\UserControls\DrawerHomeUserControl.xbf
+D:\Projekti\WindowsPhone\project_f\Frink\bin\Debug\UserControls\DrawerHomeUserControl.xbf

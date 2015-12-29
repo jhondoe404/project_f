@@ -11,14 +11,14 @@ namespace Frink.Models
         #region CLASS PARAMETERS
 
 
-        public String   name { get; set; }
-        public String   icon { get; set; }
-        public String   id { get; set; }
-        public String   createdAt { get; set; }
-        public String   updatedAt { get; set; }
-        public String   layout { get; set; }
-        public String   source { get; set; }
-        public String   type { get; set; }
+        public string   name { get; set; }
+        public string   icon { get; set; }
+        public string   id { get; set; }
+        public string   createdAt { get; set; }
+        public string   updatedAt { get; set; }
+        public string   layout { get; set; }
+        public string   source { get; set; }
+        public string   type { get; set; }
 
 
         #endregion
@@ -29,7 +29,7 @@ namespace Frink.Models
         public MenuItemModel() { }
 
 
-        public MenuItemModel (String _name, String _icon, String _id, String _createdAt, String _updatedAt, String _layout, String _source, String _type)
+        public MenuItemModel (string _name, string _icon, string _id, string _createdAt, string _updatedAt, string _layout, string _source, string _type)
         {
             this.name =         _name;
             this.icon =         _icon;

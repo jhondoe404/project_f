@@ -147,7 +147,7 @@ namespace Frink
 #if DEBUG
                         Debug.WriteLine("[App.xaml.cs] file is NOT null ");
 #endif
-                        String[] apptheme = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME, ApplicationData.Current.TemporaryFolder);
+                        string[] apptheme = await FileHelper.readHttpFromFile(ConstantsHelper.LOCAL_FILE_APPLICATION_THEME, ApplicationData.Current.TemporaryFolder);
                         DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(apptheme[0]);
                         ThemeDelegate.refreshTheme();
 

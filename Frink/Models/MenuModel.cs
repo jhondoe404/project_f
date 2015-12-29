@@ -14,15 +14,15 @@ namespace Frink.Models
 
 
         public ObservableCollection<MenuItemModel> items { get; set; }
-        public String image { get; set; }
-        public String type { get; set; }
-        public String id { get; set; }
-        public String createdAt { get; set; }
-        public String updatedAt { get; set; }
+        public string image { get; set; }
+        public string type { get; set; }
+        public string id { get; set; }
+        public string createdAt { get; set; }
+        public string updatedAt { get; set; }
 
-        public String name { get; set; }
+        public string name { get; set; }
 
-        public String imageCaption { get; set; }
+        public string imageCaption { get; set; }
 
 
 
@@ -34,7 +34,7 @@ namespace Frink.Models
         public MenuModel() {}
 
 
-        public MenuModel(ObservableCollection<MenuItemModel> _items, String _image, String _type, String _id, String _createdAt, String _updatedAt, String _name, String _imageCaption)
+        public MenuModel(ObservableCollection<MenuItemModel> _items, string _image, string _type, string _id, string _createdAt, string _updatedAt, string _name, string _imageCaption)
         {
             this.items = _items;
             this.image = _image;

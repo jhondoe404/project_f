@@ -43,7 +43,7 @@ namespace Frink.Delegates
         public NavigationDelegate(DrawerLayout.DrawerLayout parent)
         {
             this._Parent = parent;
-            this._InitialChildSize = parent.Children.Count;
+            this._InitialChildSize = parent.Children.Count + 1;
         }
 
 
@@ -76,7 +76,7 @@ namespace Frink.Delegates
 
 
         /// <summary>
-        ///     Adds items to the backstack
+        ///     Adds items to the backstack and hides previous ones
         /// </summary>
         /// <param name="item">Item to be added</param>
         /// <param name="multipleinstances">Allow multiple instances of the user control in the backstack. FALSE if not defined</param>
@@ -89,6 +89,18 @@ namespace Frink.Delegates
                 _Parent.Children.ElementAt(_Parent.Children.Count - 1).Visibility = Visibility.Collapsed;
 
             _Parent.Children.Add(item);
+        }
+
+
+        /// <summary>
+        ///     Clears all added children from the backstack
+        /// </summary>
+        public void ClearBackstack()
+        {
+            for (int i = _Parent.Children.Count; i > _InitialChildSize; i--)
+            {
+                removeChildLast();
+            }
         }
 
 
