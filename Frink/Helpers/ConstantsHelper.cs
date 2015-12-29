@@ -59,6 +59,8 @@ namespace Frink.Helpers
         public const string NAVIGATION_TYPE_LOCATION = "LocationView";
         public const string NAVIGATION_TYPE_HOME = "home";
 
+        public const string NAVIGATION_TYPE_DRAWER = "hamburger";
+
 
 
         #endregion

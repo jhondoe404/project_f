@@ -93,7 +93,15 @@ namespace Frink
 #if DEBUG
                     Debug.WriteLine("[MainPage][loadApplicationData] everything was done succesfully");
 #endif
-                    Frame.Navigate(typeof(NavigationListPage));
+                    if (DataHelper.Instance._themeModel.menu.type.Equals(ConstantsHelper.NAVIGATION_TYPE_DRAWER))
+                    {
+                        Frame.Navigate(typeof(NavigationDrawerPage));
+                    }
+                    else
+                    {
+                        Frame.Navigate(typeof(NavigationListPage));
+                    }
+                    
                 }
             }
             else

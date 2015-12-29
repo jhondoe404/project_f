@@ -154,11 +154,21 @@ namespace Frink
                         // When the navigation stack isn't restored navigate to the first page,
                         // configuring the new page by passing required information as a navigation
                         // parameter
-                    // TODO: determine type of page to navigate to. CHANGE THIS CRAP!!!!
-                        if (!rootFrame.Navigate(typeof(NavigationDrawerPage), e.Arguments))
+                        if (DataHelper.Instance._themeModel.menu.type.Equals(ConstantsHelper.NAVIGATION_TYPE_DRAWER))
                         {
-                            throw new Exception("Failed to create initial navigation page");
+                            if (!rootFrame.Navigate(typeof(NavigationDrawerPage), e.Arguments))
+                            {
+                                throw new Exception("Failed to create initial navigation page");
+                            }
                         }
+                        else
+                        {
+                            if (!rootFrame.Navigate(typeof(NavigationListPage), e.Arguments))
+                            {
+                                throw new Exception("Failed to create initial navigation page");
+                            }
+                        }
+                        
                     }
                 }            
             
@@ -312,8 +322,26 @@ namespace Frink
                             if (local.Length > 1 && local[1] != null && this.eTagTheme != local[1])
                             {
                                 this.eTagTheme = local[1];
+                                string navigationType = DataHelper.Instance._themeModel.menu.type;
                                 DataHelper.Instance._themeModel = await JSONHelper.ParseDataObject<ThemeModel>(local[0]);
                                 ThemeDelegate.refreshTheme();
+
+                                // Check if navigation type has changed
+                                if (!navigationType.Equals(DataHelper.Instance._themeModel.menu.type))
+                                {
+                                    Frame rootFrame = Window.Current.Content as Frame;
+
+                                    if (DataHelper.Instance._themeModel.menu.type.Equals(ConstantsHelper.NAVIGATION_TYPE_DRAWER))
+                                    {                                        
+                                        rootFrame.Navigate(typeof(NavigationDrawerPage));
+                                    }
+                                    else
+                                    {
+                                        rootFrame.Navigate(typeof(NavigationListPage));
+                                    }
+
+                                    rootFrame.BackStack.Clear();
+                                }
                             }
                         }
                         else
